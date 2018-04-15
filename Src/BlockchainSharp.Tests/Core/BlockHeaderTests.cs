@@ -15,19 +15,21 @@
         [TestMethod]
         public void CreateWithNumber()
         {
-            BlockHeader header = new BlockHeader(42, null);
+            BlockHeader header = new BlockHeader(42, null, null);
 
             Assert.AreEqual(42, header.Number);
         }
 
         [TestMethod]
-        public void CreateWithNumberAndParentHash()
+        public void CreateWithNumberParentHashAndTransactionsHash()
         {
             Hash parentHash = new Hash();
-            BlockHeader header = new BlockHeader(42, parentHash);
+            Hash transactionsHash = new Hash();
+            BlockHeader header = new BlockHeader(42, parentHash, transactionsHash);
 
             Assert.AreEqual(42, header.Number);
             Assert.AreEqual(parentHash, header.ParentHash);
+            Assert.AreEqual(transactionsHash, header.TransactionsHash);
         }
     }
 }

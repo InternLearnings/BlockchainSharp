@@ -14,14 +14,16 @@
         public void EncodeDecodeBlockHeader()
         {
             BlockHeaderEncoder encoder = new BlockHeaderEncoder();
-            Hash hash = new Hash();
-            BlockHeader header = new BlockHeader(1, hash);
+            Hash parentHash = new Hash();
+            Hash transactionsHash = new Hash();
+            BlockHeader header = new BlockHeader(1, parentHash, transactionsHash);
 
             var result = encoder.Decode(encoder.Encode(header));
 
             Assert.IsNotNull(result);
             Assert.AreEqual(1, result.Number);
-            Assert.AreEqual(hash, result.ParentHash);
+            Assert.AreEqual(parentHash, result.ParentHash);
+            Assert.AreEqual(transactionsHash, result.TransactionsHash);
         }
     }
 }

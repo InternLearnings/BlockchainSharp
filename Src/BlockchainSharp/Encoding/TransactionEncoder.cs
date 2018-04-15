@@ -21,6 +21,17 @@
             return Rlp.EncodeList(sender, receiver, value);
         }
 
+        public byte[] Encode(IList<Transaction> txs)
+        {
+            int ntxs = txs.Count();
+            byte[][] btxs = new byte[ntxs][];
+
+            for (int k = 0; k < ntxs; k++)
+                btxs[k] = this.Encode(txs[k]);
+
+            return Rlp.Encode(Rlp.EncodeList(btxs));
+        }
+
         public Transaction Decode(byte[] bytes)
         {
             IList<byte[]> items = Rlp.DecodeList(bytes);

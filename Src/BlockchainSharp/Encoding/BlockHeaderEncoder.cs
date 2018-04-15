@@ -19,9 +19,10 @@
         public byte[] Encode(BlockHeader header)
         {
             byte[] number = bigIntegerEncoder.Encode(new BigInteger(header.Number));
-            byte[] hash = hashEncoder.Encode(header.ParentHash);
+            byte[] parentHash = hashEncoder.Encode(header.ParentHash);
+            byte[] transactionsHash = hashEncoder.Encode(header.TransactionsHash);
 
-            return Rlp.EncodeList(number, hash);
+            return Rlp.EncodeList(number, parentHash, transactionsHash);
         }
 
         public BlockHeader Decode(byte[] bytes)
@@ -29,9 +30,10 @@
             IList<byte[]> list = Rlp.DecodeList(bytes);
 
             long number = (long)bigIntegerEncoder.Decode(list[0]);
-            Hash hash = hashEncoder.Decode(list[1]);
+            Hash parentHash = hashEncoder.Decode(list[1]);
+            Hash transactionsHash = hashEncoder.Decode(list[2]);
 
-            return new BlockHeader(number, hash);
+            return new BlockHeader(number, parentHash, transactionsHash);
         }
     }
 }

@@ -12,17 +12,22 @@
     {
         private long number;
         private Hash parentHash;
+        private Hash transactionsHash;
+
         private Hash hash;
 
-        public BlockHeader(long number, Hash parentHash)
+        public BlockHeader(long number, Hash parentHash, Hash transactionsHash)
         {
             this.number = number;
             this.parentHash = parentHash;
+            this.transactionsHash = transactionsHash;
         }
 
         public long Number { get { return this.number; } }
 
         public Hash ParentHash { get { return this.parentHash; } }
+
+        public Hash TransactionsHash { get { return this.transactionsHash; } }
 
         public Hash Hash
         {

@@ -7,6 +7,8 @@
     using BlockchainSharp.Core;
     using BlockchainSharp.Processors;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using BlockchainSharp.Core.Types;
+    using System.Numerics;
 
     [TestClass]
     public class BlockProcessorTests
@@ -73,7 +75,13 @@
         {
             Block genesis = new Block(0, null);
             Block block = new Block(1, genesis.Hash);
-            Block uncle1 = new Block(1, genesis.Hash);
+
+            Address from = new Address();
+            Address to = new Address();
+
+            Transaction transaction = new Transaction(from, to, new BigInteger(2));
+
+            Block uncle1 = new Block(1, genesis.Hash, new Transaction[] { transaction });
             Block uncle2 = new Block(2, uncle1.Hash);
 
             BlockProcessor processor = new BlockProcessor();
@@ -95,7 +103,13 @@
         {
             Block genesis = new Block(0, null);
             Block block = new Block(1, genesis.Hash);
-            Block uncle1 = new Block(1, genesis.Hash);
+
+            Address from = new Address();
+            Address to = new Address();
+
+            Transaction transaction = new Transaction(from, to, new BigInteger(2));
+
+            Block uncle1 = new Block(1, genesis.Hash, new Transaction[] { transaction });
             Block uncle2 = new Block(2, uncle1.Hash);
             Block uncle3 = new Block(3, uncle2.Hash);
 

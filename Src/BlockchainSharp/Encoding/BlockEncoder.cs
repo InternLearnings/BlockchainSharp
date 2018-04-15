@@ -27,7 +27,7 @@
             for (int k = 0; k < ntxs; k++)
                 txs[k] = txEncoder.Encode(block.Transactions[k]);
 
-            return Rlp.EncodeList(number, hash, Rlp.Encode(Rlp.EncodeList(txs)));
+            return Rlp.EncodeList(number, hash, txEncoder.Encode(block.Transactions));
         }
 
         public Block Decode(byte[] bytes)
