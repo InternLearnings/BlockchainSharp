@@ -60,7 +60,7 @@
     <Compile Include="Core\BlockProcessorDslTests.cs" />
     <Compile Include="Core\TransactionTests.cs" />
     <Compile Include="Core\AccountStateTests.cs" />
-    <Compile Include="Core\TransactionProcessorTests.cs" />
+    <Compile Include="Core\BlockExecutorTests.cs" />
     <Compile Include="Encoding\AddressEncoderTests.cs" />
     <Compile Include="Encoding\BigIntegerEncoderTests.cs" />
     <Compile Include="Encoding\AccountStateEncoderTests.cs" />

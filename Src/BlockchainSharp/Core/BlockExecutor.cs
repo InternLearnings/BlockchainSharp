@@ -7,7 +7,7 @@
     using BlockchainSharp.Stores;
     using BlockchainSharp.Tries;
 
-    public class TransactionProcessor
+    public class BlockExecutor
     {
         public AccountsState ExecuteBlock(Block block, AccountsState initialstate)
         {

@@ -68,7 +68,7 @@
     <Compile Include="Vm\Memory.cs" />
     <Compile Include="Vm\Storage.cs" />
     <Compile Include="Core\Transaction.cs" />
-    <Compile Include="Core\TransactionProcessor.cs" />
+    <Compile Include="Core\BlockExecutor.cs" />
     <Compile Include="Encoding\Rlp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Core\AccountsState.cs" />

@@ -10,7 +10,7 @@
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
-    public class TransactionProcessorTests
+    public class BlockExecutorTests
     {
         [TestMethod]
         public void ExecuteTransaction()
@@ -25,7 +25,7 @@
 
             store = store.Put(addr1, new AccountState(new BigInteger(200), 0));
 
-            var processor = new TransactionProcessor();
+            var processor = new BlockExecutor();
 
             Assert.IsTrue(processor.ExecuteTransaction(transaction, store, ref newstore));
 
@@ -50,7 +50,7 @@
             var store = new AccountsState();
             AccountsState newstore = null;
 
-            var processor = new TransactionProcessor();
+            var processor = new BlockExecutor();
 
             Assert.IsFalse(processor.ExecuteTransaction(transaction, store, ref newstore));
 
@@ -66,7 +66,7 @@
             Block block = new Block(0, null);
             var state = new AccountsState();
 
-            var processor = new TransactionProcessor();
+            var processor = new BlockExecutor();
 
             var result = processor.ExecuteBlock(block, state);
 
@@ -83,7 +83,7 @@
 
             state = state.Put(tx.Sender, new AccountState(new BigInteger(200), 0));
 
-            var processor = new TransactionProcessor();
+            var processor = new BlockExecutor();
 
             var result = processor.ExecuteBlock(block, state);
 
@@ -104,7 +104,7 @@
             Block block = new Block(0, null, new Transaction[] { tx });
             var state = new AccountsState();
 
-            var processor = new TransactionProcessor();
+            var processor = new BlockExecutor();
 
             var result = processor.ExecuteBlock(block, state);
 
