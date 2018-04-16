@@ -69,6 +69,7 @@
     <Compile Include="Encoding\UnsignedLongEncoderTests.cs" />
     <Compile Include="Encoding\HashEncoderTests.cs" />
     <Compile Include="Encoding\TransactionEncoderTests.cs" />
+    <Compile Include="Stores\TransactionPoolTests.cs" />
     <Compile Include="Tries\TrieTests.cs" />
     <Compile Include="Vm\StorageTests.cs" />
     <Compile Include="Dsl\BlockProcessorDsl.cs" />
