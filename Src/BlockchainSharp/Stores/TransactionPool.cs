@@ -11,5 +11,10 @@
         private IList<Transaction> transactions = new List<Transaction>();
 
         public IList<Transaction> Transactions { get { return this.transactions; } }
+
+        public void AddTransaction(Transaction transaction)
+        {
+            this.transactions.Add(transaction);
+        }
     }
 }

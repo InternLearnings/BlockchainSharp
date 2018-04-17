@@ -3,6 +3,9 @@
     using System;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using BlockchainSharp.Stores;
+    using BlockchainSharp.Core.Types;
+    using BlockchainSharp.Core;
+    using System.Numerics;
 
     [TestClass]
     public class TransactionPoolTests
@@ -13,6 +16,22 @@
             TransactionPool pool = new TransactionPool();
 
             Assert.AreEqual(0, pool.Transactions.Count);
+        }
+
+        [TestMethod]
+        public void AddTransaction()
+        {
+            var sender = new Address();
+            var receiver = new Address();
+
+            Transaction transaction = new Transaction(sender, receiver, new BigInteger(100));
+
+            TransactionPool pool = new TransactionPool();
+
+            pool.AddTransaction(transaction);
+
+            Assert.AreEqual(1, pool.Transactions.Count);
+            Assert.AreSame(transaction, pool.Transactions[0]);
         }
     }
 }
