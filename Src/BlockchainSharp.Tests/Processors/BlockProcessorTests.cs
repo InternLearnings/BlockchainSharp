@@ -115,11 +115,11 @@
 
             BlockProcessor processor = new BlockProcessor();
 
-            processor.Process(genesis);
-            processor.Process(block);
-            processor.Process(uncle3);
-            processor.Process(uncle2);
-            processor.Process(uncle1);
+            Assert.AreEqual(BlockProcess.Imported, processor.Process(genesis));
+            Assert.AreEqual(BlockProcess.Imported, processor.Process(block));
+            Assert.AreEqual(BlockProcess.MissingAncestor, processor.Process(uncle3));
+            Assert.AreEqual(BlockProcess.MissingAncestor, processor.Process(uncle2));
+            Assert.AreEqual(BlockProcess.Imported, processor.Process(uncle1));
 
             Assert.IsNotNull(processor.BlockChain);
             Assert.AreEqual(3, processor.BlockChain.BestBlockNumber);

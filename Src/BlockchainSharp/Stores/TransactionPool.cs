@@ -8,9 +8,9 @@
 
     public class TransactionPool
     {
-        private IList<Transaction> transactions = new List<Transaction>();
+        private ISet<Transaction> transactions = new HashSet<Transaction>();
 
-        public IList<Transaction> Transactions { get { return this.transactions; } }
+        public ISet<Transaction> Transactions { get { return this.transactions; } }
 
         public void AddTransaction(Transaction transaction)
         {

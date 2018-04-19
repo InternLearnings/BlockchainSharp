@@ -31,7 +31,24 @@
             pool.AddTransaction(transaction);
 
             Assert.AreEqual(1, pool.Transactions.Count);
-            Assert.AreSame(transaction, pool.Transactions[0]);
+            Assert.IsTrue(pool.Transactions.Contains(transaction));
+        }
+
+        [TestMethod]
+        public void AddTransactionTwice()
+        {
+            var sender = new Address();
+            var receiver = new Address();
+
+            Transaction transaction = new Transaction(sender, receiver, new BigInteger(100));
+
+            TransactionPool pool = new TransactionPool();
+
+            pool.AddTransaction(transaction);
+            pool.AddTransaction(transaction);
+
+            Assert.AreEqual(1, pool.Transactions.Count);
+            Assert.IsTrue(pool.Transactions.Contains(transaction));
         }
     }
 }

@@ -20,26 +20,28 @@
 
         public BlockChain BlockChain { get { return this.chain; } }
 
-        public void Process(Block block)
+        public BlockProcess Process(Block block)
         {
             if (this.store.GetByHash(block.Hash) != null)
-                return;
+                return BlockProcess.Known;
 
             this.store.Save(block);
             var unknownAncestor = this.GetUnknownAncestor(block);
 
             if (unknownAncestor != null)
-                return;
+                return BlockProcess.MissingAncestor;
 
             if (this.chain == null)
             {
                 this.chain = new BlockChain(block);
-                return;
+                return BlockProcess.Imported;
             }
 
-            this.chain.TryToAdd(block);
+            bool added = this.chain.TryToAdd(block);
 
             this.TryConnect(block);
+
+            return added ? BlockProcess.Imported : BlockProcess.MissingAncestor;
         }
 
         private void TryConnect(Block block) 
