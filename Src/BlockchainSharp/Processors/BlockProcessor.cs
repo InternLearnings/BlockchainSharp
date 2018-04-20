@@ -37,11 +37,11 @@
                 return BlockProcess.Imported;
             }
 
-            bool added = this.chain.TryToAdd(block);
+            this.chain.TryToAdd(block);
 
             this.TryConnect(block);
 
-            return added ? BlockProcess.Imported : BlockProcess.MissingAncestor;
+            return BlockProcess.Imported;
         }
 
         private void TryConnect(Block block) 
