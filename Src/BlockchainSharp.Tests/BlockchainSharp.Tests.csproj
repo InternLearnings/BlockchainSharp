@@ -52,6 +52,8 @@
     <Compile Include="Compilers\SimpleCompilerTests.cs" />
     <Compile Include="Core\BlockChainTests.cs" />
     <Compile Include="Core\BlockInfoTests.cs" />
+    <Compile Include="Net\Messages\TransactionMessageTests.cs" />
+    <Compile Include="Net\Messages\BlockMessageTests.cs" />
     <Compile Include="Processors\BlockProcessorTests.cs" />
     <Compile Include="Core\BlockTests.cs" />
     <Compile Include="Core\Types\AddressTests.cs" />
@@ -70,6 +72,7 @@
     <Compile Include="Encoding\HashEncoderTests.cs" />
     <Compile Include="Encoding\TransactionEncoderTests.cs" />
     <Compile Include="Stores\TransactionPoolTests.cs" />
+    <Compile Include="TestUtils\FactoryHelper.cs" />
     <Compile Include="Tries\TrieTests.cs" />
     <Compile Include="Vm\StorageTests.cs" />
     <Compile Include="Dsl\BlockProcessorDsl.cs" />
@@ -90,6 +93,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

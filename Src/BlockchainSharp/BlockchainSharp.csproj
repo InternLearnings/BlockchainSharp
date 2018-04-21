@@ -53,6 +53,10 @@
     <Compile Include="Core\BlockChain.cs" />
     <Compile Include="Core\BlockHeader.cs" />
     <Compile Include="Core\BlockInfo.cs" />
+    <Compile Include="Net\Message\BlockMessage.cs" />
+    <Compile Include="Net\Message\Message.cs" />
+    <Compile Include="Net\Message\MessageType.cs" />
+    <Compile Include="Net\Message\TransactionMessage.cs" />
     <Compile Include="Processors\BlockProcess.cs" />
     <Compile Include="Processors\BlockProcessor.cs" />
     <Compile Include="Core\Types\Address.cs" />
@@ -87,6 +91,7 @@
     <None Include="packages.config" />
     <None Include="Vm\Classes.cd" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
