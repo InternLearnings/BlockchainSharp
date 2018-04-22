@@ -9,6 +9,7 @@
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using BlockchainSharp.Core.Types;
     using System.Numerics;
+    using BlockchainSharp.Tests.TestUtils;
 
     [TestClass]
     public class BlockProcessorTests
@@ -16,7 +17,7 @@
         [TestMethod]
         public void CreateWithNoBlockChain()
         {
-            BlockProcessor processor = new BlockProcessor();
+            BlockProcessor processor = FactoryHelper.CreateBlockProcessor();
 
             Assert.IsNull(processor.BlockChain);
         }
@@ -25,7 +26,7 @@
         public void ProcessGenesisBlock()
         {
             Block genesis = new Block(0, null);
-            BlockProcessor processor = new BlockProcessor();
+            BlockProcessor processor = FactoryHelper.CreateBlockProcessor();
 
             processor.Process(genesis);
 
@@ -40,7 +41,7 @@
             Block genesis = new Block(0, null);
             Block block = new Block(1, genesis.Hash);
 
-            BlockProcessor processor = new BlockProcessor();
+            BlockProcessor processor = FactoryHelper.CreateBlockProcessor();
 
             processor.Process(genesis);
             processor.Process(block);
@@ -58,7 +59,7 @@
             Block block = new Block(1, genesis.Hash);
             Block uncle = new Block(1, genesis.Hash);
 
-            BlockProcessor processor = new BlockProcessor();
+            BlockProcessor processor = FactoryHelper.CreateBlockProcessor();
 
             processor.Process(genesis);
             processor.Process(block);
@@ -84,7 +85,7 @@
             Block uncle1 = new Block(1, genesis.Hash, new Transaction[] { transaction });
             Block uncle2 = new Block(2, uncle1.Hash);
 
-            BlockProcessor processor = new BlockProcessor();
+            BlockProcessor processor = FactoryHelper.CreateBlockProcessor();
 
             processor.Process(genesis);
             processor.Process(block);
@@ -113,7 +114,7 @@
             Block uncle2 = new Block(2, uncle1.Hash);
             Block uncle3 = new Block(3, uncle2.Hash);
 
-            BlockProcessor processor = new BlockProcessor();
+            BlockProcessor processor = FactoryHelper.CreateBlockProcessor();
 
             Assert.AreEqual(BlockProcess.Imported, processor.Process(genesis));
             Assert.AreEqual(BlockProcess.Imported, processor.Process(block));

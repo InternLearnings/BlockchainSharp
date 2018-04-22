@@ -2,6 +2,7 @@
 {
     using BlockchainSharp.Core;
     using BlockchainSharp.Core.Types;
+    using BlockchainSharp.Processors;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -10,6 +11,11 @@
 
     public static class FactoryHelper
     {
+        public static BlockProcessor CreateBlockProcessor()
+        {
+            return new BlockProcessor();
+        }
+
         public static Block CreateGenesisBlock() 
         {
             return new Block(0, null);
