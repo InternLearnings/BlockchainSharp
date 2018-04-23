@@ -4,6 +4,7 @@
     using BlockchainSharp.Core;
     using BlockchainSharp.Processors;
     using BlockchainSharp.Tests.Dsl;
+    using BlockchainSharp.Tests.TestUtils;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
@@ -12,7 +13,7 @@
         [TestMethod]
         public void CreateDsl()
         {
-            var processor = new BlockProcessor();
+            var processor = FactoryHelper.CreateBlockProcessor();
             var dsl = new BlockProcessorDsl(processor);
 
             Assert.IsNotNull(processor.BlockChain);
@@ -24,7 +25,7 @@
         [TestMethod]
         public void SendBlock()
         {
-            var processor = new BlockProcessor();
+            var processor = FactoryHelper.CreateBlockProcessor();
             var dsl = new BlockProcessorDsl(processor);
 
             dsl.Run(new string[] 
@@ -38,7 +39,7 @@
         [TestMethod]
         public void SendTwoBlocks()
         {
-            var processor = new BlockProcessor();
+            var processor = FactoryHelper.CreateBlockProcessor();
             var dsl = new BlockProcessorDsl(processor);
 
             dsl.Run(new string[] 
@@ -52,7 +53,7 @@
         [TestMethod]
         public void SendTwoBlocksInReversedOrder()
         {
-            var processor = new BlockProcessor();
+            var processor = FactoryHelper.CreateBlockProcessor();
             var dsl = new BlockProcessorDsl(processor);
 
             dsl.Run(new string[] 
@@ -66,7 +67,7 @@
         [TestMethod]
         public void SendTwoBlocksAndTwoUncles()
         {
-            var processor = new BlockProcessor();
+            var processor = FactoryHelper.CreateBlockProcessor();
             var dsl = new BlockProcessorDsl(processor);
 
             dsl.Run(new string[] 
