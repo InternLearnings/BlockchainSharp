@@ -7,6 +7,7 @@
     using BlockchainSharp.Compilers;
     using BlockchainSharp.Vm;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using BlockchainSharp.Core.Types;
 
     [TestClass]
     public class MachineTests
@@ -736,6 +737,26 @@
             }
 
             Assert.AreEqual(0, machine.Stack.Size);
+        }
+
+        [TestMethod]
+        public void GetAddress()
+        {
+            Address address = new Address();
+            ProgramEnvironment environment = new ProgramEnvironment(address);
+
+            var compiler = new BytecodeCompiler();
+            compiler.Address();
+
+            Machine machine = new Machine(environment);
+
+            machine.Execute(compiler.ToBytes());
+
+            var stack = machine.Stack;
+
+            Assert.IsNotNull(stack);
+            Assert.AreEqual(1, stack.Size);
+            Assert.AreEqual(new DataWord(address.Bytes), stack.Pop());
         }
     }
 }

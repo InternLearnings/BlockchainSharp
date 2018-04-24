@@ -108,6 +108,10 @@
                         this.stack.Push(this.stack.Pop().Not());
                         break;
 
+                    case (byte)Bytecodes.Address:
+                        this.stack.Push(new DataWord(this.programEnvironment.Address.Bytes));
+                        break;
+
                     case (byte)Bytecodes.Pop:
                         this.stack.Pop();
                         break;

@@ -75,6 +75,11 @@
             this.Compile(Bytecodes.Xor);
         }
 
+        public void Address()
+        {
+            this.Compile(Bytecodes.Address);
+        }
+
         public void Pop()
         {
             this.Compile(Bytecodes.Pop);
