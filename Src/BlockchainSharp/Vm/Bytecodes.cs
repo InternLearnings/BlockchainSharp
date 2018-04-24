@@ -19,6 +19,8 @@
         Xor = 0x18,
         Not = 0x19,
 
+        Address = 0x30,
+
         Pop = 0x50,
 
         MLoad = 0x51,

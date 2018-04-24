@@ -72,6 +72,7 @@
     <Compile Include="Stores\TransactionPool.cs" />
     <Compile Include="Tries\Trie.cs" />
     <Compile Include="Vm\Memory.cs" />
+    <Compile Include="Vm\ProgramEnvironment.cs" />
     <Compile Include="Vm\Storage.cs" />
     <Compile Include="Core\Transaction.cs" />
     <Compile Include="Core\BlockExecutor.cs" />

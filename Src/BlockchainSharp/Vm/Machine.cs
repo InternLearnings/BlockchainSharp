@@ -12,12 +12,19 @@
         private Stack stack;
         private Storage storage;
         private Memory memory;
+        private ProgramEnvironment programEnvironment;
 
         public Machine()
+            : this(null)
+        {
+        }
+
+        public Machine(ProgramEnvironment programEnvironment)
         {
             this.stack = new Stack();
             this.storage = new Storage();
             this.memory = new Memory();
+            this.programEnvironment = programEnvironment;
         }
 
         public Stack Stack { get { return this.stack; } }
