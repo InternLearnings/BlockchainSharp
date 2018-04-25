@@ -20,6 +20,7 @@
         Not = 0x19,
 
         Address = 0x30,
+        Origin = 0x32,
 
         Pop = 0x50,
 

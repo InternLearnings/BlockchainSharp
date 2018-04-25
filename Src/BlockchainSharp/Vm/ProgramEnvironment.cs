@@ -9,12 +9,16 @@
     public class ProgramEnvironment
     {
         private Address address;
+        private Address origin;
 
-        public ProgramEnvironment(Address address)
+        public ProgramEnvironment(Address address, Address origin)
         {
             this.address = address;
+            this.origin = origin;
         }
 
         public Address Address { get { return this.address; } }
+
+        public Address Origin { get { return this.origin; } }
     }
 }

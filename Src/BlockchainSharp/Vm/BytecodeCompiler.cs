@@ -80,6 +80,11 @@
             this.Compile(Bytecodes.Address);
         }
 
+        public void Origin()
+        {
+            this.Compile(Bytecodes.Origin);
+        }
+
         public void Pop()
         {
             this.Compile(Bytecodes.Pop);
