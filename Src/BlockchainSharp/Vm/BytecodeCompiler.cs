@@ -85,6 +85,11 @@
             this.Compile(Bytecodes.Origin);
         }
 
+        public void Caller()
+        {
+            this.Compile(Bytecodes.Caller);
+        }
+
         public void Pop()
         {
             this.Compile(Bytecodes.Pop);

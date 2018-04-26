@@ -116,6 +116,10 @@
                         this.stack.Push(new DataWord(this.programEnvironment.Origin.Bytes));
                         break;
 
+                    case (byte)Bytecodes.Caller:
+                        this.stack.Push(new DataWord(this.programEnvironment.Caller.Bytes));
+                        break;
+
                     case (byte)Bytecodes.Pop:
                         this.stack.Pop();
                         break;

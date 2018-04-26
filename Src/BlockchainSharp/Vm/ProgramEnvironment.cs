@@ -10,15 +10,20 @@
     {
         private Address address;
         private Address origin;
+        private Address caller;
 
-        public ProgramEnvironment(Address address, Address origin)
+        public ProgramEnvironment(Address address, Address origin, Address caller)
         {
             this.address = address;
             this.origin = origin;
+            this.caller = caller;
         }
 
         public Address Address { get { return this.address; } }
 
         public Address Origin { get { return this.origin; } }
+
+        public Address Caller { get { return this.caller; } }
     }
 }
+

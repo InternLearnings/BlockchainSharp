@@ -743,7 +743,7 @@
         public void GetAddress()
         {
             Address address = new Address();
-            ProgramEnvironment environment = new ProgramEnvironment(address, null);
+            ProgramEnvironment environment = new ProgramEnvironment(address, null, null);
 
             var compiler = new BytecodeCompiler();
             compiler.Address();
@@ -763,7 +763,7 @@
         public void GetOrigin()
         {
             Address origin = new Address();
-            ProgramEnvironment environment = new ProgramEnvironment(null, origin);
+            ProgramEnvironment environment = new ProgramEnvironment(null, origin, null);
 
             var compiler = new BytecodeCompiler();
             compiler.Origin();
@@ -777,6 +777,26 @@
             Assert.IsNotNull(stack);
             Assert.AreEqual(1, stack.Size);
             Assert.AreEqual(new DataWord(origin.Bytes), stack.Pop());
+        }
+
+        [TestMethod]
+        public void GetCaller()
+        {
+            Address caller = new Address();
+            ProgramEnvironment environment = new ProgramEnvironment(null, null, caller);
+
+            var compiler = new BytecodeCompiler();
+            compiler.Caller();
+
+            Machine machine = new Machine(environment);
+
+            machine.Execute(compiler.ToBytes());
+
+            var stack = machine.Stack;
+
+            Assert.IsNotNull(stack);
+            Assert.AreEqual(1, stack.Size);
+            Assert.AreEqual(new DataWord(caller.Bytes), stack.Pop());
         }
     }
 }
