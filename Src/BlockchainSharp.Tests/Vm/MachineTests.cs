@@ -743,7 +743,7 @@
         public void GetAddress()
         {
             Address address = new Address();
-            ProgramEnvironment environment = new ProgramEnvironment(address, null, null);
+            ProgramEnvironment environment = new ProgramEnvironment(address, null, null, null);
 
             var compiler = new BytecodeCompiler();
             compiler.Address();
@@ -763,7 +763,7 @@
         public void GetOrigin()
         {
             Address origin = new Address();
-            ProgramEnvironment environment = new ProgramEnvironment(null, origin, null);
+            ProgramEnvironment environment = new ProgramEnvironment(null, origin, null, null);
 
             var compiler = new BytecodeCompiler();
             compiler.Origin();
@@ -783,7 +783,7 @@
         public void GetCaller()
         {
             Address caller = new Address();
-            ProgramEnvironment environment = new ProgramEnvironment(null, null, caller);
+            ProgramEnvironment environment = new ProgramEnvironment(null, null, caller, null);
 
             var compiler = new BytecodeCompiler();
             compiler.Caller();
@@ -797,6 +797,26 @@
             Assert.IsNotNull(stack);
             Assert.AreEqual(1, stack.Size);
             Assert.AreEqual(new DataWord(caller.Bytes), stack.Pop());
+        }
+
+        [TestMethod]
+        public void GetCoinbase()
+        {
+            Address coinbase = new Address();
+            ProgramEnvironment environment = new ProgramEnvironment(null, null, null, coinbase);
+
+            var compiler = new BytecodeCompiler();
+            compiler.Coinbase();
+
+            Machine machine = new Machine(environment);
+
+            machine.Execute(compiler.ToBytes());
+
+            var stack = machine.Stack;
+
+            Assert.IsNotNull(stack);
+            Assert.AreEqual(1, stack.Size);
+            Assert.AreEqual(new DataWord(coinbase.Bytes), stack.Pop());
         }
     }
 }

@@ -120,6 +120,10 @@
                         this.stack.Push(new DataWord(this.programEnvironment.Caller.Bytes));
                         break;
 
+                    case (byte)Bytecodes.Coinbase:
+                        this.stack.Push(new DataWord(this.programEnvironment.Coinbase.Bytes));
+                        break;
+
                     case (byte)Bytecodes.Pop:
                         this.stack.Pop();
                         break;

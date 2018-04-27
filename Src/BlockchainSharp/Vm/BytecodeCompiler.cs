@@ -90,6 +90,11 @@
             this.Compile(Bytecodes.Caller);
         }
 
+        public void Coinbase()
+        {
+            this.Compile(Bytecodes.Coinbase);
+        }
+
         public void Pop()
         {
             this.Compile(Bytecodes.Pop);
