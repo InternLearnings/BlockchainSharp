@@ -25,6 +25,23 @@
         }
 
         [TestMethod]
+        public void CreateDataWordUsingPositiveLongInteger()
+        {
+            var dw = new DataWord(0x0100000000L);
+
+            var result = dw.Bytes;
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(32, result.Length);
+
+            for (int k = 0; k < 32; k++)
+                if (k != 32 - 5)
+                    Assert.AreEqual(0x00, result[k]);
+
+            Assert.AreEqual(0x01, result[32 - 5]);
+        }
+
+        [TestMethod]
         public void CreateDataWordUsingBytes()
         {
             var dw = new DataWord(new byte[] { 0x01, 0x02 });
