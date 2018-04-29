@@ -743,7 +743,7 @@
         public void GetAddress()
         {
             Address address = new Address();
-            ProgramEnvironment environment = new ProgramEnvironment(address, null, null, null);
+            ProgramEnvironment environment = ProgramEnvironment.Builder().Address(address).Build();
 
             var compiler = new BytecodeCompiler();
             compiler.Address();
@@ -763,7 +763,7 @@
         public void GetOrigin()
         {
             Address origin = new Address();
-            ProgramEnvironment environment = new ProgramEnvironment(null, origin, null, null);
+            ProgramEnvironment environment = ProgramEnvironment.Builder().Origin(origin).Build();
 
             var compiler = new BytecodeCompiler();
             compiler.Origin();
@@ -783,7 +783,7 @@
         public void GetCaller()
         {
             Address caller = new Address();
-            ProgramEnvironment environment = new ProgramEnvironment(null, null, caller, null);
+            ProgramEnvironment environment = ProgramEnvironment.Builder().Caller(caller).Build();
 
             var compiler = new BytecodeCompiler();
             compiler.Caller();
@@ -803,7 +803,7 @@
         public void GetCoinbase()
         {
             Address coinbase = new Address();
-            ProgramEnvironment environment = new ProgramEnvironment(null, null, null, coinbase);
+            ProgramEnvironment environment = ProgramEnvironment.Builder().Coinbase(coinbase).Build();
 
             var compiler = new BytecodeCompiler();
             compiler.Coinbase();
