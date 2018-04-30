@@ -9,12 +9,9 @@
     {
         private IList<BlockInfo> blockinfos;
 
-        public BlockChain(Block block)
+        public BlockChain()
         {
-            if (!block.IsGenesis)
-                throw new ArgumentException("Initial block should be genesis");
             this.blockinfos = new List<BlockInfo>();
-            this.blockinfos.Add(new BlockInfo(block, null));
         }
 
         public BlockChain(IList<BlockInfo> blockinfos)
@@ -28,6 +25,16 @@
 
         public bool TryToAdd(Block block)
         {
+            if (this.blockinfos.Count == 0)
+            {
+                if (!block.IsGenesis)
+                    throw new ArgumentException("Initial block should be genesis");
+
+                this.blockinfos.Add(new BlockInfo(block, null));
+
+                return true;
+            }
+
             if (!block.HasParent(this.blockinfos.Last().Block))
                 return false;
 

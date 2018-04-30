@@ -15,11 +15,11 @@
     public class BlockProcessorTests
     {
         [TestMethod]
-        public void CreateWithNoBlockChain()
+        public void CreateWithBlockChain()
         {
             BlockProcessor processor = FactoryHelper.CreateBlockProcessor();
 
-            Assert.IsNull(processor.BlockChain);
+            Assert.IsNotNull(processor.BlockChain);
         }
 
         [TestMethod]

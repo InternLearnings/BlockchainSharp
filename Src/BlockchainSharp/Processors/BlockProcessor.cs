@@ -15,6 +15,7 @@
 
         public BlockProcessor()
         {
+            this.chain = new BlockChain();
             this.store = new InMemoryBlockStore();
         }
 
@@ -30,12 +31,6 @@
 
             if (unknownAncestor != null)
                 return BlockProcess.MissingAncestor;
-
-            if (this.chain == null)
-            {
-                this.chain = new BlockChain(block);
-                return BlockProcess.Imported;
-            }
 
             this.chain.TryToAdd(block);
 

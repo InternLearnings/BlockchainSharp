@@ -12,11 +12,12 @@
     public class BlockChainTests
     {
         [TestMethod]
-        public void CreateWithInitialBlock()
+        public void AddInitialBlock()
         {
             Block block = new Block(0, null);
-            BlockChain blockchain = new BlockChain(block);
+            BlockChain blockchain = new BlockChain();
 
+            Assert.IsTrue(blockchain.TryToAdd(block));
             Assert.AreEqual(0, blockchain.BestBlockNumber);
         }
 
@@ -27,7 +28,7 @@
 
             try
             {
-                new BlockChain(block);
+                new BlockChain().TryToAdd(block);
                 Assert.Fail();
             }
             catch (Exception ex)
@@ -43,8 +44,9 @@
             Block genesis = new Block(0, null);
             Block block = new Block(1, genesis.Hash);
 
-            BlockChain chain = new BlockChain(genesis);
+            BlockChain chain = new BlockChain();
 
+            Assert.IsTrue(chain.TryToAdd(genesis));
             Assert.IsTrue(chain.TryToAdd(block));
             Assert.AreEqual(1, chain.BestBlockNumber);
         }
@@ -55,8 +57,9 @@
             Block genesis = new Block(0, null);
             Block block = new Block(1, new Hash());
 
-            BlockChain chain = new BlockChain(genesis);
+            BlockChain chain = new BlockChain();
 
+            Assert.IsTrue(chain.TryToAdd(genesis));
             Assert.IsFalse(chain.TryToAdd(block));
             Assert.AreEqual(0, chain.BestBlockNumber);
         }
@@ -67,7 +70,9 @@
             Block genesis = new Block(0, null);
             Block block = new Block(2, genesis.Hash);
 
-            BlockChain chain = new BlockChain(genesis);
+            BlockChain chain = new BlockChain();
+
+            Assert.IsTrue(chain.TryToAdd(genesis));
 
             Assert.IsFalse(chain.TryToAdd(block));
             Assert.AreEqual(0, chain.BestBlockNumber);
@@ -78,7 +83,7 @@
         {
             IList<Block> blocks = new List<Block>();
             Block parent = null;
-            BlockChain chain = null;
+            BlockChain chain = new BlockChain();
 
             for (int k = 0; k < 10; k++)
             {
@@ -86,10 +91,7 @@
                 blocks.Add(block);
                 parent = block;
 
-                if (chain == null)
-                    chain = new BlockChain(block);
-                else
-                    Assert.IsTrue(chain.TryToAdd(block));
+                Assert.IsTrue(chain.TryToAdd(block));
             }
 
             Assert.AreEqual(9, chain.BestBlockNumber);
