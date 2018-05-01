@@ -71,6 +71,7 @@
     <Compile Include="Encoding\UnsignedLongEncoderTests.cs" />
     <Compile Include="Encoding\HashEncoderTests.cs" />
     <Compile Include="Encoding\TransactionEncoderTests.cs" />
+    <Compile Include="Processors\TransactionProcessorTests.cs" />
     <Compile Include="Stores\TransactionPoolTests.cs" />
     <Compile Include="TestUtils\FactoryHelper.cs" />
     <Compile Include="Tries\TrieTests.cs" />
