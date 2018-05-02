@@ -16,9 +16,11 @@
             this.transactionPool = transactionPool;
         }
 
-        public void AddTransaction(Transaction transaction)
+        public TransactionProcess AddTransaction(Transaction transaction)
         {
             this.transactionPool.AddTransaction(transaction);
+
+            return TransactionProcess.Added;
         }
     }
 }

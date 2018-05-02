@@ -22,7 +22,7 @@
 
             TransactionProcessor processor = new TransactionProcessor(pool);
 
-            processor.AddTransaction(transaction);
+            Assert.AreEqual(TransactionProcess.Added, processor.AddTransaction(transaction));
 
             Assert.IsTrue(pool.Transactions.Contains(transaction));
         }

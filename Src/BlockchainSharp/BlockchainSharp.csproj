@@ -69,6 +69,7 @@
     <Compile Include="Encoding\UnsignedLongEncoder.cs" />
     <Compile Include="Encoding\HashEncoder.cs" />
     <Compile Include="Encoding\TransactionEncoder.cs" />
+    <Compile Include="Processors\TransactionProcess.cs" />
     <Compile Include="Processors\TransactionProcessor.cs" />
     <Compile Include="Stores\TransactionPool.cs" />
     <Compile Include="Tries\Trie.cs" />
