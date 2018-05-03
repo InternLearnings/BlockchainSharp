@@ -7,6 +7,7 @@
 
     public enum TransactionProcess
     {
-        Added
+        Added,
+        Known
     }
 }

@@ -18,6 +18,9 @@
 
         public TransactionProcess AddTransaction(Transaction transaction)
         {
+            if (this.transactionPool.Transactions.Contains(transaction))
+                return TransactionProcess.Known;
+
             this.transactionPool.AddTransaction(transaction);
 
             return TransactionProcess.Added;
