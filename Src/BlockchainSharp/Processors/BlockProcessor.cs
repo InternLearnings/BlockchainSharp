@@ -13,10 +13,10 @@
         private BlockChain chain;
         private IBlockStore store;
 
-        public BlockProcessor()
+        public BlockProcessor(BlockChain chain, IBlockStore store)
         {
-            this.chain = new BlockChain();
-            this.store = new InMemoryBlockStore();
+            this.chain = chain;
+            this.store = store;
         }
 
         public BlockChain BlockChain { get { return this.chain; } }

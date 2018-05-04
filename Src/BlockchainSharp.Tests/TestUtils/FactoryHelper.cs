@@ -3,6 +3,7 @@
     using BlockchainSharp.Core;
     using BlockchainSharp.Core.Types;
     using BlockchainSharp.Processors;
+    using BlockchainSharp.Stores;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -13,7 +14,7 @@
     {
         public static BlockProcessor CreateBlockProcessor()
         {
-            return new BlockProcessor();
+            return new BlockProcessor(new BlockChain(), new InMemoryBlockStore());
         }
 
         public static Block CreateGenesisBlock() 
