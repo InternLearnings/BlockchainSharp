@@ -7,8 +7,8 @@
     using System.Text;
     using BlockchainSharp.Core;
     using BlockchainSharp.Core.Types;
-    using BlockchainSharp.Tries;
     using BlockchainSharp.Encoding;
+    using BlockchainSharp.Tries;
 
     public class AccountsState
     {

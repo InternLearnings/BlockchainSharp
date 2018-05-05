@@ -156,7 +156,8 @@
 
             byte[] result = new byte[resultlength];
 
-            foreach (byte[] bs in bytes) {
+            foreach (byte[] bs in bytes) 
+            {
                 Array.Copy(bs, 0, result, offset, bs.Length);
                 offset += bs.Length;
             }
@@ -177,7 +178,7 @@
             else if (totallength >= 56)
             {
                 result[0] = 247 + 1;
-                result[1] = (byte)(totallength);
+                result[1] = (byte)totallength;
             }
             else
                 result[0] = (byte)(totallength + 192);
@@ -215,10 +216,10 @@
                 return bytes[position + 1];
 
             if (b0 == 249)
-                return bytes[position + 1] << 8 + bytes[position + 2];
+                return (bytes[position + 1] << 8) + bytes[position + 2];
 
             if (b0 == 250)
-                return bytes[position + 1] << 16 + bytes[position + 2] << 8 + bytes[position + 3];
+                return (bytes[position + 1] << 16) + (bytes[position + 2] << 8) + bytes[position + 3];
 
             if (b0 < 128)
                 return 1;

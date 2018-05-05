@@ -2,8 +2,8 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Security.Cryptography;
     using System.Linq;
+    using System.Security.Cryptography;
     using System.Text;
 
     using BlockchainSharp.Core.Types;
@@ -13,9 +13,9 @@
     public class Block
     {
         private static Transaction[] emptyTxs = new Transaction[0];
-        private static TransactionEncoder txEncoder = new TransactionEncoder();
+        private static TransactionEncoder transactionEncoder = new TransactionEncoder();
 
-        BlockHeader header;
+        private BlockHeader header;
         private IList<Transaction> transactions;
 
         public Block(long number, Hash parentHash)
@@ -29,7 +29,7 @@
                 throw new InvalidOperationException("Genesis block should have no parent");
 
             this.transactions = new List<Transaction>(transactions);
-            this.header = new BlockHeader(number, parentHash, CalculateHash(txEncoder.Encode(this.transactions)));
+            this.header = new BlockHeader(number, parentHash, this.CalculateHash(transactionEncoder.Encode(this.transactions)));
         }
 
         public IList<Transaction> Transactions { get { return this.transactions; } }

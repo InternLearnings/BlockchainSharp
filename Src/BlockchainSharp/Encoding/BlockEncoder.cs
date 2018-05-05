@@ -13,7 +13,7 @@
         private static BigIntegerEncoder bigIntegerEncoder = new BigIntegerEncoder();
         private static HashEncoder hashEncoder = new HashEncoder();
         private static BlockEncoder instance = new BlockEncoder();
-        private static TransactionEncoder txEncoder = new TransactionEncoder();
+        private static TransactionEncoder transactionEncoder = new TransactionEncoder();
 
         public static BlockEncoder Instance { get { return instance; } }
 
@@ -25,9 +25,9 @@
             byte[][] txs = new byte[ntxs][];
 
             for (int k = 0; k < ntxs; k++)
-                txs[k] = txEncoder.Encode(block.Transactions[k]);
+                txs[k] = transactionEncoder.Encode(block.Transactions[k]);
 
-            return Rlp.EncodeList(number, hash, txEncoder.Encode(block.Transactions));
+            return Rlp.EncodeList(number, hash, transactionEncoder.Encode(block.Transactions));
         }
 
         public Block Decode(byte[] bytes)
@@ -41,7 +41,7 @@
             IList<Transaction> txs = new List<Transaction>();
 
             for (int k = 0; k < btxs.Count; k++)
-                txs.Add(txEncoder.Decode(btxs[k]));
+                txs.Add(transactionEncoder.Decode(btxs[k]));
 
             return new Block(number, hash, txs);
         }

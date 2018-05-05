@@ -1,10 +1,10 @@
 ﻿namespace BlockchainSharp.Encoding
 {
-    using BlockchainSharp.Core;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
+    using BlockchainSharp.Core;
 
     public class AccountStateEncoder
     {

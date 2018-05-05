@@ -5,8 +5,8 @@
     using System.Linq;
     using System.Text;
     using BlockchainSharp.Core.Types;
-    using Org.BouncyCastle.Crypto.Digests;
     using BlockchainSharp.Encoding;
+    using Org.BouncyCastle.Crypto.Digests;
 
     public class BlockHeader
     {

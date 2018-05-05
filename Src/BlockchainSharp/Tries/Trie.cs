@@ -52,6 +52,36 @@
             return this.Put(key, null);
         }
 
+        private static bool EmptyLeafs(Trie[] leafs)
+        {
+            if (leafs == null)
+                return true;
+
+            for (int k = 0; k < leafs.Length; k++)
+                if (leafs[k] != null)
+                    return false;
+
+            return true;
+        }
+
+        private static byte[] ToBytes(string key)
+        {
+            byte[] bytes = new byte[key.Length];
+
+            for (int k = 0; k < bytes.Length; k++)
+                bytes[k] = ToByte(key[k]);
+
+            return bytes;
+        }
+
+        private static byte ToByte(char ch)
+        {
+            if (ch >= '0' && ch <= '9')
+                return (byte)(ch - '0');
+
+            return (byte)(ch - 'a' + 10);
+        }
+
         private byte[] Get(byte[] key, int position)
         {
             if (position == key.Length)
@@ -77,7 +107,7 @@
 
             int offset = key[position];
  
-            Trie newleaf = PutAtNewLeaf(key, position, value, offset);
+            Trie newleaf = this.PutAtNewLeaf(key, position, value, offset);
 
             Trie[] newleafs = this.ChangeLeaf(offset, newleaf);
 
@@ -113,7 +143,8 @@
             return new Trie(newvalue, this.leafs);
         }
 
-        private bool SameValue(byte[] newvalue) {
+        private bool SameValue(byte[] newvalue) 
+        {
             if (this.value == newvalue)
                 return true;
 
@@ -131,22 +162,10 @@
             return (Trie[])this.leafs.Clone();
         }
 
-        private static bool EmptyLeafs(Trie[] leafs)
-        {
-            if (leafs == null)
-                return true;
-
-            for (int k = 0; k < leafs.Length; k++)
-                if (leafs[k] != null)
-                    return false;
-
-            return true;
-        }
-
         private Trie[] ChangeLeaf(int offset, Trie newleaf)
         {
             if (this.leafs != null && this.leafs[offset] == newleaf)
-                return leafs;
+                return this.leafs;
 
             if (EmptyLeafs(this.leafs) && newleaf == null)
                 return null;
@@ -156,24 +175,6 @@
             newleafs[offset] = newleaf;
 
             return newleafs;
-        }
-
-        private static byte[] ToBytes(string key)
-        {
-            byte[] bytes = new byte[key.Length];
-
-            for (int k = 0; k < bytes.Length; k++)
-                bytes[k] = ToByte(key[k]);
-
-            return bytes;
-        }
-
-        private static byte ToByte(char ch)
-        {
-            if (ch >= '0' && ch <= '9')
-                return (byte)(ch - '0');
-
-            return (byte)(ch - 'a' + 10);
         }
     }
 }
