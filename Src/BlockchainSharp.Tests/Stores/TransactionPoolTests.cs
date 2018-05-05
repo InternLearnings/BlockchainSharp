@@ -1,11 +1,11 @@
 ﻿namespace BlockchainSharp.Tests.Stores
 {
     using System;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using BlockchainSharp.Stores;
-    using BlockchainSharp.Core.Types;
-    using BlockchainSharp.Core;
     using System.Numerics;
+    using BlockchainSharp.Core;
+    using BlockchainSharp.Core.Types;
+    using BlockchainSharp.Stores;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
     public class TransactionPoolTests

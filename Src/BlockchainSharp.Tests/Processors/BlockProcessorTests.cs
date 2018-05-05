@@ -3,13 +3,13 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Numerics;
     using System.Text;
     using BlockchainSharp.Core;
-    using BlockchainSharp.Processors;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
     using BlockchainSharp.Core.Types;
-    using System.Numerics;
+    using BlockchainSharp.Processors;
     using BlockchainSharp.Tests.TestUtils;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
     public class BlockProcessorTests

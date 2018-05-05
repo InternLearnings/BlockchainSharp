@@ -5,9 +5,9 @@
     using System.Linq;
     using System.Numerics;
     using BlockchainSharp.Compilers;
+    using BlockchainSharp.Core.Types;
     using BlockchainSharp.Vm;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using BlockchainSharp.Core.Types;
 
     [TestClass]
     public class MachineTests
@@ -673,72 +673,6 @@
             Assert.AreEqual(dw2, machine.Stack.Pop());
         }
 
-        private static void PushPop(int times)
-        {
-            byte[] bytes = new byte[times];
-
-            for (int k = 0; k < times; k++)
-                bytes[k] = (byte)(k + 1);
-
-            PushPop(bytes);
-        }
-
-        private static void PushPop(byte[] bytes)
-        {
-            BytecodeCompiler compiler = new BytecodeCompiler();
-
-            compiler.CompileAdjust(Bytecodes.Push1, bytes.Length - 1, bytes);
-
-            Machine machine = new Machine();
-
-            machine.Execute(compiler.ToBytes());
-
-            Assert.AreEqual(1, machine.Stack.Size);
-            Assert.AreEqual(new DataWord(bytes), machine.Stack.Pop());
-        }
-
-        private static Machine PushSwap(int nswap)
-        {
-            BytecodeCompiler compiler = new BytecodeCompiler();
-
-            for (int k = 0; k < 17; k++)
-                compiler.Push(k);
-
-            compiler.Swap(nswap);
-
-            Machine machine = new Machine();
-
-            machine.Execute(compiler.ToBytes());
-
-            return machine;
-        }
-
-        private static void PushDupPop(int times)
-        {
-            var compiler = new BytecodeCompiler();
-
-            for (int k = 0; k < times; k++)
-                compiler.Push(k);
-
-            compiler.Dup(times);
-
-            Machine machine = new Machine();
-
-            machine.Execute(compiler.ToBytes());
-
-            DataWord value = new DataWord(times);
-
-            Assert.AreEqual(DataWord.Zero, machine.Stack.Pop());
-
-            for (int k = 0; k < times; k++)
-            {
-                value = value.Subtract(DataWord.One);
-                Assert.AreEqual(value, machine.Stack.Pop());
-            }
-
-            Assert.AreEqual(0, machine.Stack.Size);
-        }
-
         [TestMethod]
         public void GetAddress()
         {
@@ -817,6 +751,72 @@
             Assert.IsNotNull(stack);
             Assert.AreEqual(1, stack.Size);
             Assert.AreEqual(new DataWord(coinbase.Bytes), stack.Pop());
+        }
+
+        private static void PushPop(int times)
+        {
+            byte[] bytes = new byte[times];
+
+            for (int k = 0; k < times; k++)
+                bytes[k] = (byte)(k + 1);
+
+            PushPop(bytes);
+        }
+
+        private static void PushPop(byte[] bytes)
+        {
+            BytecodeCompiler compiler = new BytecodeCompiler();
+
+            compiler.CompileAdjust(Bytecodes.Push1, bytes.Length - 1, bytes);
+
+            Machine machine = new Machine();
+
+            machine.Execute(compiler.ToBytes());
+
+            Assert.AreEqual(1, machine.Stack.Size);
+            Assert.AreEqual(new DataWord(bytes), machine.Stack.Pop());
+        }
+
+        private static Machine PushSwap(int nswap)
+        {
+            BytecodeCompiler compiler = new BytecodeCompiler();
+
+            for (int k = 0; k < 17; k++)
+                compiler.Push(k);
+
+            compiler.Swap(nswap);
+
+            Machine machine = new Machine();
+
+            machine.Execute(compiler.ToBytes());
+
+            return machine;
+        }
+
+        private static void PushDupPop(int times)
+        {
+            var compiler = new BytecodeCompiler();
+
+            for (int k = 0; k < times; k++)
+                compiler.Push(k);
+
+            compiler.Dup(times);
+
+            Machine machine = new Machine();
+
+            machine.Execute(compiler.ToBytes());
+
+            DataWord value = new DataWord(times);
+
+            Assert.AreEqual(DataWord.Zero, machine.Stack.Pop());
+
+            for (int k = 0; k < times; k++)
+            {
+                value = value.Subtract(DataWord.One);
+                Assert.AreEqual(value, machine.Stack.Pop());
+            }
+
+            Assert.AreEqual(0, machine.Stack.Size);
         }
     }
 }

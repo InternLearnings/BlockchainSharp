@@ -333,7 +333,8 @@
         {
             byte[][] bytes = new byte[10][];
 
-            for (int k = 0; k < bytes.Length; k++) {
+            for (int k = 0; k < bytes.Length; k++) 
+            {
                 byte[] data = new byte[256];
 
                 for (int j = 0; j < data.Length; j++)
@@ -361,7 +362,7 @@
             byte[] data = new byte[256 * 256];
 
             for (int j = 0; j < data.Length; j++)
-                data[j] = (byte)(j);
+                data[j] = (byte)j;
 
             bytes[0] = Rlp.Encode(data);
 

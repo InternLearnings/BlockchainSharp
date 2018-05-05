@@ -1,14 +1,14 @@
 ﻿namespace BlockchainSharp.Tests.TestUtils
 {
-    using BlockchainSharp.Core;
-    using BlockchainSharp.Core.Types;
-    using BlockchainSharp.Processors;
-    using BlockchainSharp.Stores;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Numerics;
     using System.Text;
+    using BlockchainSharp.Core;
+    using BlockchainSharp.Core.Types;
+    using BlockchainSharp.Processors;
+    using BlockchainSharp.Stores;
 
     public static class FactoryHelper
     {

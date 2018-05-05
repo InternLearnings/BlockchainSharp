@@ -1,10 +1,10 @@
 ﻿namespace BlockchainSharp.Tests.Net.Messages
 {
     using System;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using BlockchainSharp.Tests.TestUtils;
     using BlockchainSharp.Core;
     using BlockchainSharp.Net.Message;
+    using BlockchainSharp.Tests.TestUtils;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
     public class BlockMessageTests
