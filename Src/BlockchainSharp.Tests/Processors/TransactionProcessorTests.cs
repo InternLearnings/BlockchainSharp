@@ -22,7 +22,7 @@
 
             TransactionProcessor processor = new TransactionProcessor(pool);
 
-            Assert.AreEqual(TransactionProcess.Added, processor.AddTransaction(transaction));
+            Assert.AreEqual(TransactionProcess.Added, processor.ProcessTransaction(transaction));
 
             Assert.IsTrue(pool.Transactions.Contains(transaction));
         }
@@ -38,8 +38,8 @@
 
             TransactionProcessor processor = new TransactionProcessor(pool);
 
-            Assert.AreEqual(TransactionProcess.Added, processor.AddTransaction(transaction));
-            Assert.AreEqual(TransactionProcess.Known, processor.AddTransaction(transaction));
+            Assert.AreEqual(TransactionProcess.Added, processor.ProcessTransaction(transaction));
+            Assert.AreEqual(TransactionProcess.Known, processor.ProcessTransaction(transaction));
 
             Assert.IsTrue(pool.Transactions.Contains(transaction));
         }

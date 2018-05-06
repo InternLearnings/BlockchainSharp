@@ -28,7 +28,7 @@
             Block genesis = new Block(0, null);
             BlockProcessor processor = FactoryHelper.CreateBlockProcessor();
 
-            processor.Process(genesis);
+            processor.ProcessBlock(genesis);
 
             Assert.IsNotNull(processor.BlockChain);
             Assert.AreEqual(0, processor.BlockChain.BestBlockNumber);
@@ -43,8 +43,8 @@
 
             BlockProcessor processor = FactoryHelper.CreateBlockProcessor();
 
-            processor.Process(genesis);
-            processor.Process(block);
+            processor.ProcessBlock(genesis);
+            processor.ProcessBlock(block);
 
             Assert.IsNotNull(processor.BlockChain);
             Assert.AreEqual(1, processor.BlockChain.BestBlockNumber);
@@ -61,9 +61,9 @@
 
             BlockProcessor processor = FactoryHelper.CreateBlockProcessor();
 
-            processor.Process(genesis);
-            processor.Process(block);
-            processor.Process(uncle);
+            processor.ProcessBlock(genesis);
+            processor.ProcessBlock(block);
+            processor.ProcessBlock(uncle);
 
             Assert.IsNotNull(processor.BlockChain);
             Assert.AreEqual(1, processor.BlockChain.BestBlockNumber);
@@ -87,10 +87,10 @@
 
             BlockProcessor processor = FactoryHelper.CreateBlockProcessor();
 
-            processor.Process(genesis);
-            processor.Process(block);
-            processor.Process(uncle1);
-            processor.Process(uncle2);
+            processor.ProcessBlock(genesis);
+            processor.ProcessBlock(block);
+            processor.ProcessBlock(uncle1);
+            processor.ProcessBlock(uncle2);
 
             Assert.IsNotNull(processor.BlockChain);
             Assert.AreEqual(2, processor.BlockChain.BestBlockNumber);
@@ -116,11 +116,11 @@
 
             BlockProcessor processor = FactoryHelper.CreateBlockProcessor();
 
-            Assert.AreEqual(BlockProcess.Imported, processor.Process(genesis));
-            Assert.AreEqual(BlockProcess.Imported, processor.Process(block));
-            Assert.AreEqual(BlockProcess.MissingAncestor, processor.Process(uncle3));
-            Assert.AreEqual(BlockProcess.MissingAncestor, processor.Process(uncle2));
-            Assert.AreEqual(BlockProcess.Imported, processor.Process(uncle1));
+            Assert.AreEqual(BlockProcess.Imported, processor.ProcessBlock(genesis));
+            Assert.AreEqual(BlockProcess.Imported, processor.ProcessBlock(block));
+            Assert.AreEqual(BlockProcess.MissingAncestor, processor.ProcessBlock(uncle3));
+            Assert.AreEqual(BlockProcess.MissingAncestor, processor.ProcessBlock(uncle2));
+            Assert.AreEqual(BlockProcess.Imported, processor.ProcessBlock(uncle1));
 
             Assert.IsNotNull(processor.BlockChain);
             Assert.AreEqual(3, processor.BlockChain.BestBlockNumber);

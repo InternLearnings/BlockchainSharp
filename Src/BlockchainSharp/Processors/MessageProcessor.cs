@@ -9,15 +9,20 @@
     public class MessageProcessor
     {
         private BlockProcessor blockProcessor;
+        private TransactionProcessor transactionProcessor;
 
-        public MessageProcessor(BlockProcessor blockProcessor)
+        public MessageProcessor(BlockProcessor blockProcessor, TransactionProcessor transactionProcessor)
         {
             this.blockProcessor = blockProcessor;
+            this.transactionProcessor = transactionProcessor;
         }
 
         public void ProcessMessage(Message message)
         {
-            this.blockProcessor.Process(((BlockMessage)message).Block);
+            if (message.MessageType == MessageType.BlockMessage)
+                this.blockProcessor.ProcessBlock(((BlockMessage)message).Block);
+            else if (message.MessageType == MessageType.TransactionMessage)
+                this.transactionProcessor.ProcessTransaction(((TransactionMessage)message).Transaction);
         }
     }
 }

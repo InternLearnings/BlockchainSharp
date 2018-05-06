@@ -16,7 +16,7 @@
             this.transactionPool = transactionPool;
         }
 
-        public TransactionProcess AddTransaction(Transaction transaction)
+        public TransactionProcess ProcessTransaction(Transaction transaction)
         {
             if (this.transactionPool.Transactions.Contains(transaction))
                 return TransactionProcess.Known;

@@ -17,7 +17,7 @@
         {
             this.processor = processor;
             Block genesis = new Block(0, null);
-            this.processor.Process(genesis);
+            this.processor.ProcessBlock(genesis);
             this.blocks["g0"] = genesis;
         }
 
@@ -70,7 +70,7 @@
         private void RunSend(IEnumerable<string> bnames)
         {
             foreach (var bname in bnames)
-                this.processor.Process(this.blocks[bname]);
+                this.processor.ProcessBlock(this.blocks[bname]);
         }
 
         private void RunTop(string bname)

@@ -21,7 +21,7 @@
 
         public BlockChain BlockChain { get { return this.chain; } }
 
-        public BlockProcess Process(Block block)
+        public BlockProcess ProcessBlock(Block block)
         {
             if (this.store.GetByHash(block.Hash) != null)
                 return BlockProcess.Known;
