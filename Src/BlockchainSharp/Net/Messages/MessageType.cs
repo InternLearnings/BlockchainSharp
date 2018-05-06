@@ -1,4 +1,4 @@
-﻿namespace BlockchainSharp.Net.Message
+﻿namespace BlockchainSharp.Net.Messages
 {
     using System;
     using System.Collections.Generic;

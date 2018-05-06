@@ -2,7 +2,7 @@
 {
     using System;
     using BlockchainSharp.Core;
-    using BlockchainSharp.Net.Message;
+    using BlockchainSharp.Net.Messages;
     using BlockchainSharp.Tests.TestUtils;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 

@@ -53,10 +53,10 @@
     <Compile Include="Core\BlockChain.cs" />
     <Compile Include="Core\BlockHeader.cs" />
     <Compile Include="Core\BlockInfo.cs" />
-    <Compile Include="Net\Message\BlockMessage.cs" />
-    <Compile Include="Net\Message\Message.cs" />
-    <Compile Include="Net\Message\MessageType.cs" />
-    <Compile Include="Net\Message\TransactionMessage.cs" />
+    <Compile Include="Net\Messages\BlockMessage.cs" />
+    <Compile Include="Net\Messages\Message.cs" />
+    <Compile Include="Net\Messages\MessageType.cs" />
+    <Compile Include="Net\Messages\TransactionMessage.cs" />
     <Compile Include="Processors\BlockProcess.cs" />
     <Compile Include="Processors\BlockProcessor.cs" />
     <Compile Include="Core\Types\Address.cs" />
