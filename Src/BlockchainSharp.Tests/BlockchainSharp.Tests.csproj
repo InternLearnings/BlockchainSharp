@@ -72,6 +72,7 @@
     <Compile Include="Encoding\HashEncoderTests.cs" />
     <Compile Include="Encoding\TransactionEncoderTests.cs" />
     <Compile Include="Processors\TransactionProcessorTests.cs" />
+    <Compile Include="Processors\MessageProcessorTests.cs" />
     <Compile Include="Stores\TransactionPoolTests.cs" />
     <Compile Include="TestUtils\FactoryHelper.cs" />
     <Compile Include="Tries\TrieTests.cs" />
