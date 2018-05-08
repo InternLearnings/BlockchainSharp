@@ -24,5 +24,23 @@
             Assert.AreEqual(0, block.Transactions.Count);
             Assert.AreEqual(genesis.Hash, block.ParentHash);
         }
+
+        [TestMethod]
+        public void MineBlockWithTransaction()
+        {
+            TransactionPool transactionPool = new TransactionPool();
+            Transaction transaction = FactoryHelper.CreateTransaction(1000);
+
+            MinerProcessor processor = new MinerProcessor(transactionPool);
+            Block genesis = FactoryHelper.CreateGenesisBlock();
+
+            Block block = processor.MineBlock(genesis);
+
+            Assert.IsNotNull(block);
+            Assert.AreEqual(1, block.Number);
+            Assert.AreEqual(1, block.Transactions.Count);
+            Assert.AreSame(transaction, block.Transactions[0]);
+            Assert.AreEqual(genesis.Hash, block.ParentHash);
+        }
     }
 }

@@ -18,7 +18,7 @@
 
         public Block MineBlock(Block parent)
         {
-            return new Block(parent.Number + 1, parent.Hash);
+            return new Block(parent.Number + 1, parent.Hash, this.transactionPool.Transactions);
         }
     }
 }
