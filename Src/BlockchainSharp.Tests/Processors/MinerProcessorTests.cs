@@ -30,6 +30,7 @@
         {
             TransactionPool transactionPool = new TransactionPool();
             Transaction transaction = FactoryHelper.CreateTransaction(1000);
+            transactionPool.AddTransaction(transaction);
 
             MinerProcessor processor = new MinerProcessor(transactionPool);
             Block genesis = FactoryHelper.CreateGenesisBlock();
