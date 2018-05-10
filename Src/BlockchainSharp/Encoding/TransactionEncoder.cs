@@ -10,7 +10,11 @@
 
     public class TransactionEncoder
     {
+        private static TransactionEncoder instance = new TransactionEncoder();
+
         private AddressEncoder addressEncoder = new AddressEncoder();
+
+        public static TransactionEncoder Instance { get { return instance; } }
 
         public byte[] Encode(Transaction tx)
         {

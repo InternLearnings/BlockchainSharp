@@ -30,6 +30,7 @@
             Assert.AreEqual(sender, result.Sender);
 
             Assert.AreEqual(new BigInteger(100), result.Value);
+            Assert.AreEqual(transaction.Hash, result.Hash);
         }
     }
 }

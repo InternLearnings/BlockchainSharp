@@ -7,12 +7,16 @@
     using System.Text;
     using BlockchainSharp.Core.Types;
     using BlockchainSharp.Stores;
+    using Org.BouncyCastle.Crypto.Digests;
+    using BlockchainSharp.Encoding;
 
     public class Transaction
     {
         private Address sender;
         private Address receiver;
         private BigInteger value;
+
+        private Hash hash;
 
         public Transaction(Address sender, Address receiver, BigInteger value)
         {
@@ -29,5 +33,29 @@
         public BigInteger Value { get { return this.value; } }
 
         public Address Receiver { get { return this.receiver; } }
+
+        public Hash Hash
+        {
+            get
+            {
+                if (this.hash != null)
+                    return this.hash;
+
+                this.hash = this.CalculateHash();
+
+                return this.hash;
+            }
+        }
+
+        private Hash CalculateHash()
+        {
+            Sha3Digest digest = new Sha3Digest(256);
+            byte[] bytes = TransactionEncoder.Instance.Encode(this);
+            digest.BlockUpdate(bytes, 0, bytes.Length);
+            byte[] result = new byte[32];
+            digest.DoFinal(result, 0);
+
+            return new Hash(result);
+        }
     }
 }
