@@ -28,6 +28,18 @@
         }
 
         [TestMethod]
+        public void TwoTransactionsWithSameDataHaveTheSameHash()
+        {
+            var sender = new Address();
+            var receiver = new Address();
+
+            Transaction transaction1 = new Transaction(sender, receiver, new BigInteger(100));
+            Transaction transaction2 = new Transaction(sender, receiver, new BigInteger(100));
+
+            Assert.AreEqual(transaction1.Hash, transaction2.Hash);
+        }
+
+        [TestMethod]
         public void RejectTransactionWithNegativeValue()
         {
             var sender = new Address();
