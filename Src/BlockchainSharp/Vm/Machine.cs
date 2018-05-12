@@ -156,6 +156,12 @@
 
                     case (byte)Bytecodes.Jump:
                         pc = (int)this.stack.Pop().Value;
+
+                        bytecode = bytecodes[pc++];
+
+                        if (bytecode != (byte)Bytecodes.JumpDest)
+                            throw new InvalidOperationException("Invalid jump destination");
+
                         break;
 
                     case (byte)Bytecodes.JumpI:

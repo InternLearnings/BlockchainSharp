@@ -38,6 +38,8 @@
 
         Pc = 0x58,
 
+        JumpDest = 0x5b,
+
         Push1 = 0x60,
         Push2 = 0x61,
         Push3 = 0x62,

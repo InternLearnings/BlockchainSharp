@@ -135,6 +135,11 @@
             this.Compile(Bytecodes.JumpI);
         }
 
+        public void JumpDest()
+        {
+            this.Compile(Bytecodes.JumpDest);
+        }
+
         public void Pc()
         {
             this.Compile(Bytecodes.Pc);
