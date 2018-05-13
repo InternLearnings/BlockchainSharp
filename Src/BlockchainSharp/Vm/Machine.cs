@@ -168,7 +168,14 @@
                         var newpc = (int)this.stack.Pop().Value;
 
                         if (!this.stack.Pop().Value.Equals(BigInteger.Zero))
+                        {
                             pc = newpc;
+
+                            bytecode = bytecodes[pc++];
+
+                            if (bytecode != (byte)Bytecodes.JumpDest)
+                                throw new InvalidOperationException("Invalid jump destination");
+                        }
 
                         break;
 

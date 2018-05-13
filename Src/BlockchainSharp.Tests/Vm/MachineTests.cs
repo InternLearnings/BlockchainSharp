@@ -480,6 +480,7 @@
             compiler.Push(2);
             compiler.Push(3);
             compiler.Push(4);
+            compiler.JumpDest();
 
             Machine machine = new Machine();
 
