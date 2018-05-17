@@ -517,6 +517,32 @@
         }
 
         [TestMethod]
+        public void ConditionalJumpWithoutJumpDest()
+        {
+            var compiler = new BytecodeCompiler();
+
+            compiler.Push(1);
+            compiler.Push(11);
+            compiler.JumpI();
+            compiler.Push(2);
+            compiler.Push(3);
+            compiler.Push(4);
+            compiler.Push(5);
+
+            Machine machine = new Machine();
+
+            try
+            {
+                machine.Execute(compiler.ToBytes());
+                Assert.Fail();
+            }
+            catch (InvalidOperationException ex)
+            {
+                Assert.AreEqual("Invalid jump destination", ex.Message);
+            }
+        }
+
+        [TestMethod]
         public void ConditionalJumpWhenFalse()
         {
             var compiler = new BytecodeCompiler();
