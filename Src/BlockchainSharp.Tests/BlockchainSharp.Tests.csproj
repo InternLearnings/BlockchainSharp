@@ -76,6 +76,8 @@
     <Compile Include="Processors\MinerProcessorTests.cs" />
     <Compile Include="Stores\TransactionPoolTests.cs" />
     <Compile Include="TestUtils\FactoryHelper.cs" />
+    <Compile Include="TestUtils\HexUtils.cs" />
+    <Compile Include="TestUtils\HexUtilsTests.cs" />
     <Compile Include="Tries\TrieTests.cs" />
     <Compile Include="Vm\StorageTests.cs" />
     <Compile Include="Dsl\BlockProcessorDsl.cs" />
