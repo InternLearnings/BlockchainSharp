@@ -32,9 +32,9 @@
             return this.value == null && this.leafs == null;
         }
 
-        public Trie Put(string key, byte[] value)
+        public Trie Put(byte[] key, byte[] value)
         {
-            Trie newtrie = this.Put(ToBytes(key), 0, value);
+            Trie newtrie = this.Put(ToNibbles(key), 0, value);
 
             if (newtrie == null)
                 return empty;
@@ -42,14 +42,14 @@
             return newtrie;
         }
 
-        public byte[] Get(string key)
+        public byte[] Get(byte[] key)
         {
-            return this.Get(ToBytes(key), 0);
+            return this.Get(ToNibbles(key), 0);
         }
 
-        public Trie Remove(string key)
+        public Trie Remove(byte[] key)
         {
-            return this.Put(key, null);
+            return this.Put(ToNibbles(key), 0, null);
         }
 
         private static bool EmptyLeafs(Trie[] leafs)
@@ -64,22 +64,18 @@
             return true;
         }
 
-        private static byte[] ToBytes(string key)
+        private static byte[] ToNibbles(byte[] key)
         {
-            byte[] bytes = new byte[key.Length];
+            byte[] bytes = new byte[key.Length * 2];
 
-            for (int k = 0; k < bytes.Length; k++)
-                bytes[k] = ToByte(key[k]);
+            for (int k = 0; k < key.Length; k++)
+            {
+                byte value = key[k];
+                bytes[k * 2] = (byte)((value >> 4) & 0x0f);
+                bytes[k * 2+ 1] = (byte)(value & 0x0f);
+            }
 
             return bytes;
-        }
-
-        private static byte ToByte(char ch)
-        {
-            if (ch >= '0' && ch <= '9')
-                return (byte)(ch - '0');
-
-            return (byte)(ch - 'a' + 10);
         }
 
         private byte[] Get(byte[] key, int position)

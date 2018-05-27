@@ -29,12 +29,12 @@
 
         public AccountsState Put(Address address, AccountState state)
         {
-            return new AccountsState(this.states.Put(address.ToString(), encoder.Encode(state)));
+            return new AccountsState(this.states.Put(address.Bytes, encoder.Encode(state)));
         }
 
         public AccountState Get(Address address)
         {
-            var result = this.states.Get(address.ToString());
+            var result = this.states.Get(address.Bytes);
 
             if (result == null)
                 return defaultValue;
