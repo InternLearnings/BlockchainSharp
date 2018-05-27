@@ -52,6 +52,21 @@
         }
 
         [TestMethod]
+        public void AddChildBlock()
+        {
+            Block genesis = new Block(0, null);
+            Block parent = new Block(1, genesis.Hash);
+            Block block = new Block(2, parent.Hash);
+
+            BlockChain chain = new BlockChain();
+
+            Assert.IsTrue(chain.TryToAdd(genesis));
+            Assert.IsTrue(chain.TryToAdd(parent));
+            Assert.IsTrue(chain.TryToAdd(block));
+            Assert.AreEqual(2, chain.BestBlockNumber);
+        }
+
+        [TestMethod]
         public void RejectBlockWithDifferentParent()
         {
             Block genesis = new Block(0, null);
