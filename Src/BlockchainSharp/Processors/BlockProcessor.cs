@@ -23,64 +23,40 @@
 
         public BlockProcess ProcessBlock(Block block)
         {
-            if (this.store.GetByHash(block.Hash) != null)
+            if (this.chain.HasBlock(block.Hash))
                 return BlockProcess.Known;
 
-            this.store.Save(block);
-            var unknownAncestor = this.GetUnknownAncestor(block);
-
-            if (unknownAncestor != null)
+            if (this.store.GetByHash(block.Hash) != null)
                 return BlockProcess.MissingAncestor;
 
-            this.chain.TryToAdd(block);
+            if (block.ParentHash != null && !this.chain.HasBlock(block.ParentHash))
+            {
+                this.store.Save(block);
+                return BlockProcess.MissingAncestor;
+            }
 
-            this.TryConnect(block);
+            if (this.chain.TryToAdd(block))
+            {
+                this.TryConnectChildren(block);
+                return BlockProcess.Imported;
+            }
 
-            return BlockProcess.Imported;
+            return BlockProcess.NotImported;
         }
 
-        private void TryConnect(Block block) 
+        private void TryConnectChildren(Block block) 
         {
-            if (this.chain.BestBlockNumber < block.Number)
-                this.chain = this.ToBlockChain(block);
+            IList<Block> toremove = new List<Block>();
 
             foreach (var child in this.store.GetByParentHash(block.Hash))
-                this.TryConnect(child);
-        }
+                if (this.chain.TryToAdd(child))
+                {
+                    toremove.Add(child);
+                    this.TryConnectChildren(child);
+                }
 
-        private BlockChain ToBlockChain(Block block)
-        {
-            BlockInfo[] blockinfos = new BlockInfo[block.Number + 1];
-
-            long n = block.Number + 1;
-
-            while (n > 0)
-            {
-                n--;
-                blockinfos[n] = new BlockInfo(block, null);
-
-                if (n > 0)
-                    block = this.store.GetByHash(block.ParentHash);
-            }
-
-            return new BlockChain(blockinfos.ToList());
-        }
-
-        private Hash GetUnknownAncestor(Block block)
-        {
-            var parentHash = block.ParentHash;
-
-            while (block.Number > 0)
-            {
-                block = this.store.GetByHash(parentHash);
-
-                if (block == null)
-                    return parentHash;
-
-                parentHash = block.ParentHash;
-            }
-
-            return null;
+            foreach (var removed in toremove)
+                this.store.Remove(removed.Hash);
         }
     }
 }

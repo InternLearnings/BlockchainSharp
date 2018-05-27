@@ -8,6 +8,7 @@
     public enum BlockProcess
     {
         Imported,
+        NotImported,
         Known,
         MissingAncestor
     }

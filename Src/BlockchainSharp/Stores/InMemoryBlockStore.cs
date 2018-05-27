@@ -68,5 +68,20 @@
 
             bs2.Add(block);
         }
+
+        public void Remove(Hash key)
+        {
+            Block block = this.blocks[key];
+
+            if (block == null)
+                return;
+
+            this.blocks.Remove(key);
+
+            this.blocksbynumber[block.Number].Remove(block);
+            
+            if (block.ParentHash != null)
+                this.blocksbyparenthash[block.ParentHash].Remove(block);
+        }
     }
 }

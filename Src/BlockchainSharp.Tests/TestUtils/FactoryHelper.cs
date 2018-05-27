@@ -12,9 +12,14 @@
 
     public static class FactoryHelper
     {
+        public static BlockChain CreateBlockChain()
+        {
+            return new BlockChain(new InMemoryBlockStore(), null);
+        }
+
         public static BlockProcessor CreateBlockProcessor()
         {
-            return new BlockProcessor(new BlockChain(), new InMemoryBlockStore());
+            return new BlockProcessor(CreateBlockChain(), new InMemoryBlockStore());
         }
 
         public static Block CreateGenesisBlock() 

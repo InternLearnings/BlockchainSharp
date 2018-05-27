@@ -14,5 +14,7 @@
         IEnumerable<Block> GetByParentHash(Hash hash);
 
         void Save(Block block);
+
+        void Remove(Hash hash);
     }
 }

@@ -7,6 +7,7 @@
     using BlockchainSharp.Core;
     using BlockchainSharp.Core.Types;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using BlockchainSharp.Tests.TestUtils;
 
     [TestClass]
     public class BlockChainTests
@@ -15,7 +16,7 @@
         public void AddInitialBlock()
         {
             Block block = new Block(0, null);
-            BlockChain blockchain = new BlockChain();
+            BlockChain blockchain = FactoryHelper.CreateBlockChain();
 
             Assert.IsTrue(blockchain.TryToAdd(block));
             Assert.AreEqual(0, blockchain.BestBlockNumber);
@@ -24,18 +25,9 @@
         [TestMethod]
         public void RejectNonGenesisInitialBlock()
         {
-            Block block = new Block(1, null);
-
-            try
-            {
-                new BlockChain().TryToAdd(block);
-                Assert.Fail();
-            }
-            catch (Exception ex)
-            {
-                Assert.IsInstanceOfType(ex, typeof(ArgumentException));
-                Assert.AreEqual("Initial block should be genesis", ex.Message);
-            }
+            Block genesis = new Block(0, null);
+            Block block = new Block(1, genesis.Hash);
+            Assert.IsFalse(FactoryHelper.CreateBlockChain().TryToAdd(block));
         }
 
         [TestMethod]
@@ -44,7 +36,7 @@
             Block genesis = new Block(0, null);
             Block block = new Block(1, genesis.Hash);
 
-            BlockChain chain = new BlockChain();
+            BlockChain chain = FactoryHelper.CreateBlockChain();
 
             Assert.IsTrue(chain.TryToAdd(genesis));
             Assert.IsTrue(chain.TryToAdd(block));
@@ -58,7 +50,7 @@
             Block parent = new Block(1, genesis.Hash);
             Block block = new Block(2, parent.Hash);
 
-            BlockChain chain = new BlockChain();
+            BlockChain chain = FactoryHelper.CreateBlockChain();
 
             Assert.IsTrue(chain.TryToAdd(genesis));
             Assert.IsTrue(chain.TryToAdd(parent));
@@ -72,7 +64,7 @@
             Block genesis = new Block(0, null);
             Block block = new Block(1, new Hash());
 
-            BlockChain chain = new BlockChain();
+            BlockChain chain = FactoryHelper.CreateBlockChain();
 
             Assert.IsTrue(chain.TryToAdd(genesis));
             Assert.IsFalse(chain.TryToAdd(block));
@@ -85,7 +77,7 @@
             Block genesis = new Block(0, null);
             Block block = new Block(2, genesis.Hash);
 
-            BlockChain chain = new BlockChain();
+            BlockChain chain = FactoryHelper.CreateBlockChain();
 
             Assert.IsTrue(chain.TryToAdd(genesis));
 
@@ -98,7 +90,7 @@
         {
             IList<Block> blocks = new List<Block>();
             Block parent = null;
-            BlockChain chain = new BlockChain();
+            BlockChain chain = FactoryHelper.CreateBlockChain();
 
             for (int k = 0; k < 10; k++)
             {
