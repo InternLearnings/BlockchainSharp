@@ -36,7 +36,7 @@
 
         public long Number { get { return this.header.Number; } }
 
-        public Hash Hash { get { return this.header.Hash; } }
+        public BlockHash Hash { get { return this.header.Hash; } }
 
         public Hash ParentHash { get { return this.header.ParentHash; } }
 
