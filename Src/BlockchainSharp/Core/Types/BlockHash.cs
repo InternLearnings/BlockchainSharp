@@ -9,9 +9,14 @@
 
     public class BlockHash : Hash
     {
-        public BlockHash(BlockHeader header)
-            : base(CalculateHash(header))
+        public BlockHash(byte[] bytes)
+            : base(bytes)
         {
+        }
+
+        public static BlockHash Calculate(BlockHeader header)
+        {
+            return new BlockHash(CalculateHash(header));
         }
 
         private static byte[] CalculateHash(BlockHeader header)

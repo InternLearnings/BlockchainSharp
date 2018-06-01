@@ -30,7 +30,7 @@
             IList<byte[]> list = Rlp.DecodeList(bytes);
 
             long number = (long)bigIntegerEncoder.Decode(list[0]);
-            Hash parentHash = hashEncoder.Decode(list[1]);
+            BlockHash parentHash = hashEncoder.DecodeBlockHash(list[1]);
             Hash transactionsHash = hashEncoder.Decode(list[2]);
 
             return new BlockHeader(number, parentHash, transactionsHash);

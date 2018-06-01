@@ -23,7 +23,7 @@
         [TestMethod]
         public void CreateWithNumberParentHashAndTransactionsHash()
         {
-            Hash parentHash = new Hash();
+            BlockHash parentHash = new BlockHash(new byte[] { 1, 2, 3 });
             Hash transactionsHash = new Hash();
             BlockHeader header = new BlockHeader(42, parentHash, transactionsHash);
 

@@ -16,7 +16,7 @@
 
         private BlockHash hash;
 
-        public BlockHeader(long number, Hash parentHash, Hash transactionsHash)
+        public BlockHeader(long number, BlockHash parentHash, Hash transactionsHash)
         {
             this.number = number;
             this.parentHash = parentHash;
@@ -36,7 +36,7 @@
                 if (this.hash != null)
                     return this.hash;
 
-                this.hash = new BlockHash(this);
+                this.hash = BlockHash.Calculate(this);
 
                 return this.hash;
             }

@@ -35,7 +35,7 @@
         {
             try
             {
-                new Block(0, new Hash());
+                new Block(0, new BlockHash(new byte[] { 1, 2, 3 }));
                 Assert.Fail();
             }
             catch (Exception ex) 

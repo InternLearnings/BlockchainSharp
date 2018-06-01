@@ -45,8 +45,8 @@
         [TestMethod]
         public void GetBlocksByNumber()
         {
-            var block1 = new Block(42, new Hash());
-            var block2 = new Block(42, new Hash());
+            var block1 = new Block(42, new BlockHash(new byte[] { 1, 2 }));
+            var block2 = new Block(42, new BlockHash(new byte[] { 3, 4 }));
 
             var store = new InMemoryBlockStore();
 
@@ -64,7 +64,7 @@
         [TestMethod]
         public void SaveAndGetBlockByHash()
         {
-            var block = new Block(42, new Hash());
+            var block = new Block(42, new BlockHash(new byte[] { 5, 6 }));
             var hash = block.Hash;
 
             var store = new InMemoryBlockStore();
@@ -81,7 +81,7 @@
         [TestMethod]
         public void SaveAndGetBlockByParentHash()
         {
-            var block = new Block(42, new Hash());
+            var block = new Block(42, new BlockHash(new byte[] { 1, 2 }));
             var hash = block.Hash;
 
             var store = new InMemoryBlockStore();

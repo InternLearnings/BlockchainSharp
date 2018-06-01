@@ -15,7 +15,7 @@
         public void EncodeDecodeBlock()
         {
             BlockEncoder encoder = new BlockEncoder();
-            Hash hash = new Hash();
+            BlockHash hash = new BlockHash(new byte[] { 1, 2, 3 });
             Block block = new Block(1, hash);
 
             var result = encoder.Decode(encoder.Encode(block));

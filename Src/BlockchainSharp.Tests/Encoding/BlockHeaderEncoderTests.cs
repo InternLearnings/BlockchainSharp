@@ -14,7 +14,7 @@
         public void EncodeDecodeBlockHeader()
         {
             BlockHeaderEncoder encoder = new BlockHeaderEncoder();
-            Hash parentHash = new Hash();
+            BlockHash parentHash = new BlockHash(new byte[] { 1, 2, 3 });
             Hash transactionsHash = new Hash();
             BlockHeader header = new BlockHeader(1, parentHash, transactionsHash);
 

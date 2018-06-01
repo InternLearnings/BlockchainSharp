@@ -62,7 +62,7 @@
         public void RejectBlockWithDifferentParent()
         {
             Block genesis = new Block(0, null);
-            Block block = new Block(1, new Hash());
+            Block block = new Block(1, new BlockHash(new byte[] { 1, 2, 3 }));
 
             BlockChain chain = FactoryHelper.CreateBlockChain();
 

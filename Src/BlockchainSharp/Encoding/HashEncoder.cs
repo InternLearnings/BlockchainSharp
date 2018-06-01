@@ -26,5 +26,15 @@
 
             return new Hash(hash);
         }
+
+        public BlockHash DecodeBlockHash(byte[] bytes)
+        {
+            byte[] hash = Rlp.Decode(bytes);
+
+            if (hash.Length == 0)
+                return null;
+
+            return new BlockHash(hash);
+        }
     }
 }
