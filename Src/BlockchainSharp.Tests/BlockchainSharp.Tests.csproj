@@ -52,6 +52,7 @@
     <Compile Include="Compilers\SimpleCompilerTests.cs" />
     <Compile Include="Core\BlockChainTests.cs" />
     <Compile Include="Core\BlockInfoTests.cs" />
+    <Compile Include="Core\StatusTests.cs" />
     <Compile Include="Net\Messages\TransactionMessageTests.cs" />
     <Compile Include="Net\Messages\BlockMessageTests.cs" />
     <Compile Include="Processors\BlockProcessorTests.cs" />
