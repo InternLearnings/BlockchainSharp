@@ -4,8 +4,8 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
-    using BlockchainSharp.Stores;
     using BlockchainSharp.Core.Types;
+    using BlockchainSharp.Stores;
 
     public class BlockChain
     {
@@ -29,8 +29,8 @@
             if (this.blockStore.GetByHash(blockHash) != null)
                 return false;
 
-
-            if (block.Number > 0) {
+            if (block.Number > 0)
+            {
                 Block parent = this.blockStore.GetByHash(block.ParentHash);
                 
                 if (parent == null)
@@ -50,7 +50,7 @@
 
         public bool HasBlock(Hash hash)
         {
-            return blockStore.GetByHash(hash) != null;
+            return this.blockStore.GetByHash(hash) != null;
         }
 
         public Block GetBlock(ulong n)
@@ -58,7 +58,7 @@
             if (n < 0 || this.bestBlock == null || n > this.bestBlock.Number)
                 return null;
 
-            Block block = bestBlock;
+            Block block = this.bestBlock;
 
             while (n != block.Number)
                 block = this.blockStore.GetByHash(block.ParentHash);

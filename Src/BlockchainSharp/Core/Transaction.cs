@@ -6,9 +6,9 @@
     using System.Numerics;
     using System.Text;
     using BlockchainSharp.Core.Types;
+    using BlockchainSharp.Encoding;
     using BlockchainSharp.Stores;
     using Org.BouncyCastle.Crypto.Digests;
-    using BlockchainSharp.Encoding;
 
     public class Transaction
     {

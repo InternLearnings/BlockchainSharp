@@ -72,7 +72,7 @@
             {
                 byte value = key[k];
                 bytes[k * 2] = (byte)((value >> 4) & 0x0f);
-                bytes[k * 2+ 1] = (byte)(value & 0x0f);
+                bytes[(k * 2) + 1] = (byte)(value & 0x0f);
             }
 
             return bytes;

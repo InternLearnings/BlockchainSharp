@@ -1,11 +1,11 @@
 ﻿namespace BlockchainSharp.Core.Types
 {
-    using BlockchainSharp.Encoding;
-    using Org.BouncyCastle.Crypto.Digests;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
+    using BlockchainSharp.Encoding;
+    using Org.BouncyCastle.Crypto.Digests;
 
     public class BlockHash : Hash
     {

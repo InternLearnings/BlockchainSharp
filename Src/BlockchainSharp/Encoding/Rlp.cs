@@ -7,9 +7,9 @@
 
     public static class Rlp
     {
-        private const int SIZE_LARGE = 256 * 256 - 1;
-        private const int SIZE_MEDIUM = 256 - 1;
-        private const int SIZE_SMALL = 56 - 1;
+        private const int SizeLarge = (256 * 256) - 1;
+        private const int SizeMedium = 256 - 1;
+        private const int SizeSmall = 56 - 1;
 
         private static byte[] emptyarray = new byte[0];
         private static byte[] empty = new byte[] { 0x80 };
@@ -142,17 +142,17 @@
             int resultlength = totallength + 1;
             int offset = 1;
 
-            if (totallength >= SIZE_LARGE)
+            if (totallength >= SizeLarge)
             {
                 resultlength += 3;
                 offset = 4;
             }
-            else if (totallength >= SIZE_MEDIUM)
+            else if (totallength >= SizeMedium)
             {
                 resultlength += 2;
                 offset = 3;
             }
-            else if (totallength >= SIZE_SMALL)
+            else if (totallength >= SizeSmall)
             {
                 resultlength++;
                 offset = 2;
@@ -166,20 +166,20 @@
                 offset += bs.Length;
             }
 
-            if (totallength > SIZE_LARGE)
+            if (totallength > SizeLarge)
             {
                 result[0] = 247 + 3;
                 result[1] = (byte)(totallength >> 16);
                 result[2] = (byte)(totallength >> 8);
                 result[3] = (byte)(totallength & 0x00ff);
             }
-            else if (totallength > SIZE_MEDIUM)
+            else if (totallength > SizeMedium)
             {
                 result[0] = 247 + 2;
                 result[1] = (byte)(totallength >> 8);
                 result[2] = (byte)(totallength & 0x00ff);
             }
-            else if (totallength > SIZE_SMALL)
+            else if (totallength > SizeSmall)
             {
                 result[0] = 247 + 1;
                 result[1] = (byte)totallength;
