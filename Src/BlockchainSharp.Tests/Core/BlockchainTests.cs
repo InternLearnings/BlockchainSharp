@@ -19,7 +19,7 @@
             BlockChain blockchain = FactoryHelper.CreateBlockChain();
 
             Assert.IsTrue(blockchain.TryToAdd(block));
-            Assert.AreEqual(0, blockchain.BestBlockNumber);
+            Assert.AreEqual(block.Number, blockchain.BestBlockNumber);
         }
 
         [TestMethod]
@@ -40,7 +40,7 @@
 
             Assert.IsTrue(chain.TryToAdd(genesis));
             Assert.IsTrue(chain.TryToAdd(block));
-            Assert.AreEqual(1, chain.BestBlockNumber);
+            Assert.AreEqual(block.Number, chain.BestBlockNumber);
         }
 
         [TestMethod]
@@ -55,7 +55,7 @@
             Assert.IsTrue(chain.TryToAdd(genesis));
             Assert.IsTrue(chain.TryToAdd(parent));
             Assert.IsTrue(chain.TryToAdd(block));
-            Assert.AreEqual(2, chain.BestBlockNumber);
+            Assert.AreEqual(block.Number, chain.BestBlockNumber);
         }
 
         [TestMethod]
@@ -68,7 +68,7 @@
 
             Assert.IsTrue(chain.TryToAdd(genesis));
             Assert.IsFalse(chain.TryToAdd(block));
-            Assert.AreEqual(0, chain.BestBlockNumber);
+            Assert.AreEqual(genesis.Number, chain.BestBlockNumber);
         }
 
         [TestMethod]
@@ -82,7 +82,7 @@
             Assert.IsTrue(chain.TryToAdd(genesis));
 
             Assert.IsFalse(chain.TryToAdd(block));
-            Assert.AreEqual(0, chain.BestBlockNumber);
+            Assert.AreEqual(genesis.Number, chain.BestBlockNumber);
         }
 
         [TestMethod]
@@ -92,7 +92,7 @@
             Block parent = null;
             BlockChain chain = FactoryHelper.CreateBlockChain();
 
-            for (int k = 0; k < 10; k++)
+            for (uint k = 0; k < 10; k++)
             {
                 Block block = new Block(k, parent != null ? parent.Hash : null);
                 blocks.Add(block);
@@ -101,19 +101,19 @@
                 Assert.IsTrue(chain.TryToAdd(block));
             }
 
-            Assert.AreEqual(9, chain.BestBlockNumber);
+            Assert.AreEqual(9ul, chain.BestBlockNumber);
 
-            for (int k = 0; k < 10; k++)
+            for (uint k = 0; k < 10; k++)
             {
                 Block block = chain.GetBlock(k);
 
                 Assert.IsNotNull(block);
-                Assert.AreEqual(blocks[k], block);
+                Assert.AreEqual(blocks[(int)k], block);
                 Assert.AreEqual(k, block.Number);
             }
 
             Assert.IsNull(chain.GetBlock(10));
-            Assert.IsNull(chain.GetBlock(-1));
+            Assert.IsNull(chain.GetBlock(20));
         }
     }
 }

@@ -74,7 +74,7 @@
             var result = store.GetByHash(hash);
 
             Assert.IsNotNull(result);
-            Assert.AreEqual(42, result.Number);
+            Assert.AreEqual(42ul, result.Number);
             Assert.AreEqual(hash, result.Hash);
         }
 

@@ -18,12 +18,12 @@
         private BlockHeader header;
         private IList<Transaction> transactions;
 
-        public Block(long number, BlockHash parentHash)
+        public Block(ulong number, BlockHash parentHash)
             : this(number, parentHash, emptyTxs)
         {
         }
 
-        public Block(long number, BlockHash parentHash, IEnumerable<Transaction> transactions)
+        public Block(ulong number, BlockHash parentHash, IEnumerable<Transaction> transactions)
         {
             if (number == 0 && parentHash != null)
                 throw new InvalidOperationException("Genesis block should have no parent");
@@ -34,7 +34,7 @@
 
         public IList<Transaction> Transactions { get { return this.transactions; } }
 
-        public long Number { get { return this.header.Number; } }
+        public ulong Number { get { return this.header.Number; } }
 
         public BlockHash Hash { get { return this.header.Hash; } }
 

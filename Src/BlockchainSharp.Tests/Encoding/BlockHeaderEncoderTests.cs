@@ -21,7 +21,7 @@
             var result = encoder.Decode(encoder.Encode(header));
 
             Assert.IsNotNull(result);
-            Assert.AreEqual(1, result.Number);
+            Assert.AreEqual(1ul, result.Number);
             Assert.AreEqual(parentHash, result.ParentHash);
             Assert.AreEqual(transactionsHash, result.TransactionsHash);
         }

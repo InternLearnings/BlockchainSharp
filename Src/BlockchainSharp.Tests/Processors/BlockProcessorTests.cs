@@ -31,7 +31,7 @@
             processor.ProcessBlock(genesis);
 
             Assert.IsNotNull(processor.BlockChain);
-            Assert.AreEqual(0, processor.BlockChain.BestBlockNumber);
+            Assert.AreEqual(0ul, processor.BlockChain.BestBlockNumber);
             Assert.AreEqual(genesis, processor.BlockChain.GetBlock(0));
         }
 
@@ -47,7 +47,7 @@
             processor.ProcessBlock(block);
 
             Assert.IsNotNull(processor.BlockChain);
-            Assert.AreEqual(1, processor.BlockChain.BestBlockNumber);
+            Assert.AreEqual(1ul, processor.BlockChain.BestBlockNumber);
             Assert.AreEqual(genesis, processor.BlockChain.GetBlock(0));
             Assert.AreEqual(block, processor.BlockChain.GetBlock(1));
         }
@@ -66,7 +66,7 @@
             processor.ProcessBlock(uncle);
 
             Assert.IsNotNull(processor.BlockChain);
-            Assert.AreEqual(1, processor.BlockChain.BestBlockNumber);
+            Assert.AreEqual(1ul, processor.BlockChain.BestBlockNumber);
             Assert.AreEqual(genesis, processor.BlockChain.GetBlock(0));
             Assert.AreEqual(block, processor.BlockChain.GetBlock(1));
         }
@@ -93,7 +93,7 @@
             processor.ProcessBlock(uncle2);
 
             Assert.IsNotNull(processor.BlockChain);
-            Assert.AreEqual(2, processor.BlockChain.BestBlockNumber);
+            Assert.AreEqual(2ul, processor.BlockChain.BestBlockNumber);
             Assert.AreEqual(genesis, processor.BlockChain.GetBlock(0));
             Assert.AreEqual(uncle1, processor.BlockChain.GetBlock(1));
             Assert.AreEqual(uncle2, processor.BlockChain.GetBlock(2));
@@ -123,7 +123,7 @@
             Assert.AreEqual(BlockProcess.Imported, processor.ProcessBlock(uncle1));
 
             Assert.IsNotNull(processor.BlockChain);
-            Assert.AreEqual(3, processor.BlockChain.BestBlockNumber);
+            Assert.AreEqual(3ul, processor.BlockChain.BestBlockNumber);
             Assert.AreEqual(genesis, processor.BlockChain.GetBlock(0));
             Assert.AreEqual(uncle1, processor.BlockChain.GetBlock(1));
             Assert.AreEqual(uncle2, processor.BlockChain.GetBlock(2));

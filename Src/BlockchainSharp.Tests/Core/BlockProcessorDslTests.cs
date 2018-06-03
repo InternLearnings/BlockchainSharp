@@ -19,7 +19,7 @@
             Assert.IsNotNull(processor.BlockChain);
             Assert.IsNotNull(processor.BlockChain.BestBlock);
             Assert.IsTrue(processor.BlockChain.BestBlock.IsGenesis);
-            Assert.AreEqual(0, processor.BlockChain.BestBlockNumber);
+            Assert.AreEqual(0ul, processor.BlockChain.BestBlockNumber);
         }
 
         [TestMethod]

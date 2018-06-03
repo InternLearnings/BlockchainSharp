@@ -20,7 +20,7 @@
             Block block = processor.MineBlock(genesis);
 
             Assert.IsNotNull(block);
-            Assert.AreEqual(1, block.Number);
+            Assert.AreEqual(1ul, block.Number);
             Assert.AreEqual(0, block.Transactions.Count);
             Assert.AreEqual(genesis.Hash, block.ParentHash);
         }
@@ -38,7 +38,7 @@
             Block block = processor.MineBlock(genesis);
 
             Assert.IsNotNull(block);
-            Assert.AreEqual(1, block.Number);
+            Assert.AreEqual(1ul, block.Number);
             Assert.AreEqual(1, block.Transactions.Count);
             Assert.AreSame(transaction, block.Transactions[0]);
             Assert.AreEqual(genesis.Hash, block.ParentHash);
@@ -59,7 +59,7 @@
             Block block = processor.MineBlock(genesis);
 
             Assert.IsNotNull(block);
-            Assert.AreEqual(1, block.Number);
+            Assert.AreEqual(1ul, block.Number);
             Assert.AreEqual(2, block.Transactions.Count);
             Assert.IsTrue(block.Transactions.Contains(transaction1));
             Assert.IsTrue(block.Transactions.Contains(transaction2));

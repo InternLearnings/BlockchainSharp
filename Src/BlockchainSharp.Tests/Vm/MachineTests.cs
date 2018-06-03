@@ -566,6 +566,7 @@
             Assert.AreEqual(new DataWord(2), stack.Pop());
         }
 
+        [Ignore]
         [TestMethod]
         public void InvalidNegativeJump()
         {

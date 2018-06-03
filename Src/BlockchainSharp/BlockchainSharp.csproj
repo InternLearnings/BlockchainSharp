@@ -95,7 +95,6 @@
     <Compile Include="Vm\Stack.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Core\Classes.cd" />
     <None Include="packages.config" />
     <None Include="Vm\Classes.cd" />
   </ItemGroup>

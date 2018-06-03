@@ -17,7 +17,7 @@
         {
             Block block = new Block(42, null);
 
-            Assert.AreEqual(42, block.Number);
+            Assert.AreEqual(42ul, block.Number);
         }
 
         [TestMethod]

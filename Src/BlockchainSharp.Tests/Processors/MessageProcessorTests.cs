@@ -23,7 +23,7 @@
             processor.ProcessMessage(message);
 
             Assert.IsNotNull(blockProcessor.BlockChain);
-            Assert.AreEqual(0, blockProcessor.BlockChain.BestBlockNumber);
+            Assert.AreEqual(block.Number, blockProcessor.BlockChain.BestBlockNumber);
             Assert.AreEqual(block, blockProcessor.BlockChain.GetBlock(0));
         }
 

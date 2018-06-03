@@ -10,20 +10,20 @@
 
     public class BlockHeader
     {
-        private long number;
+        private ulong number;
         private Hash parentHash;
         private Hash transactionsHash;
 
         private BlockHash hash;
 
-        public BlockHeader(long number, BlockHash parentHash, Hash transactionsHash)
+        public BlockHeader(ulong number, BlockHash parentHash, Hash transactionsHash)
         {
             this.number = number;
             this.parentHash = parentHash;
             this.transactionsHash = transactionsHash;
         }
 
-        public long Number { get { return this.number; } }
+        public ulong Number { get { return this.number; } }
 
         public Hash ParentHash { get { return this.parentHash; } }
 

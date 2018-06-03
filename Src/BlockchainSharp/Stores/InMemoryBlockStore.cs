@@ -10,7 +10,7 @@
     public class InMemoryBlockStore : IBlockStore
     {
         private IDictionary<Hash, Block> blocks = new Dictionary<Hash, Block>();
-        private IDictionary<long, IList<Block>> blocksbynumber = new Dictionary<long, IList<Block>>();
+        private IDictionary<ulong, IList<Block>> blocksbynumber = new Dictionary<ulong, IList<Block>>();
         private IDictionary<Hash, IList<Block>> blocksbyparenthash = new Dictionary<Hash, IList<Block>>();
 
         public Block GetByHash(Hash hash)
@@ -21,7 +21,7 @@
             return null;
         }
 
-        public IEnumerable<Block> GetByNumber(long number)
+        public IEnumerable<Block> GetByNumber(ulong number)
         {
             if (this.blocksbynumber.ContainsKey(number))
                 return this.blocksbynumber[number];

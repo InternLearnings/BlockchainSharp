@@ -9,7 +9,7 @@
     {
         Block GetByHash(Hash hash);
 
-        IEnumerable<Block> GetByNumber(long number);
+        IEnumerable<Block> GetByNumber(ulong number);
 
         IEnumerable<Block> GetByParentHash(Hash hash);
 

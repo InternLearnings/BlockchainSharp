@@ -18,7 +18,7 @@
             this.bestBlock = bestBlock;
         }
 
-        public long BestBlockNumber { get { return this.bestBlock.Number; } }
+        public ulong BestBlockNumber { get { return this.bestBlock.Number; } }
 
         public Block BestBlock { get { return this.bestBlock; } }
 
@@ -53,7 +53,7 @@
             return blockStore.GetByHash(hash) != null;
         }
 
-        public Block GetBlock(long n)
+        public Block GetBlock(ulong n)
         {
             if (n < 0 || this.bestBlock == null || n > this.bestBlock.Number)
                 return null;
