@@ -1,11 +1,11 @@
 ﻿namespace BlockchainSharp.Tests.Processors
 {
     using System;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using BlockchainSharp.Stores;
-    using BlockchainSharp.Processors;
-    using BlockchainSharp.Tests.TestUtils;
     using BlockchainSharp.Core;
+    using BlockchainSharp.Processors;
+    using BlockchainSharp.Stores;
+    using BlockchainSharp.Tests.TestUtils;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
     public class MinerProcessorTests

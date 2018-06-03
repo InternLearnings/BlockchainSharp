@@ -6,8 +6,8 @@
     using System.Text;
     using BlockchainSharp.Core;
     using BlockchainSharp.Core.Types;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
     using BlockchainSharp.Tests.TestUtils;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
     public class BlockChainTests

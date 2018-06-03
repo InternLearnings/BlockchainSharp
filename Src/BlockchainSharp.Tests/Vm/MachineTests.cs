@@ -582,7 +582,6 @@
             try
             {
                 machine.Execute(compiler.ToBytes());
-
             }
             catch (InvalidOperationException ex)
             {
@@ -606,7 +605,6 @@
             try
             {
                 machine.Execute(compiler.ToBytes());
-
             }
             catch (InvalidOperationException ex)
             {
