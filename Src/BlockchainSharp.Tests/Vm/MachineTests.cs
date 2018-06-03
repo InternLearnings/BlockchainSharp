@@ -566,7 +566,6 @@
             Assert.AreEqual(new DataWord(2), stack.Pop());
         }
 
-        [Ignore]
         [TestMethod]
         public void InvalidNegativeJump()
         {
@@ -580,11 +579,15 @@
 
             Machine machine = new Machine();
 
-            machine.Execute(compiler.ToBytes());
+            try
+            {
+                machine.Execute(compiler.ToBytes());
 
-            var stack = machine.Stack;
-
-            Assert.AreEqual(0, stack.Size);
+            }
+            catch (InvalidOperationException ex)
+            {
+                Assert.AreEqual("Invalid jump destination", ex.Message);
+            }
         }
 
         [TestMethod]
@@ -600,11 +603,15 @@
 
             Machine machine = new Machine();
 
-            machine.Execute(compiler.ToBytes());
+            try
+            {
+                machine.Execute(compiler.ToBytes());
 
-            var stack = machine.Stack;
-
-            Assert.AreEqual(0, stack.Size);
+            }
+            catch (InvalidOperationException ex)
+            {
+                Assert.AreEqual("Invalid jump destination", ex.Message);
+            }
         }
 
         [TestMethod]

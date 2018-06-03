@@ -27,7 +27,7 @@
 
         public Address Caller { get { return this.caller; } }
 
-        public Address Coinbase { get { return this.Coinbase; } }
+        public Address Coinbase { get { return this.coinbase; } }
 
         public static ProgramEnvironmentBuilder Builder()
         {
