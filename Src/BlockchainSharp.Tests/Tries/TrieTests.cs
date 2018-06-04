@@ -96,7 +96,6 @@
             Assert.IsFalse(trie3.IsEmpty());
         }
 
-        [Ignore]
         [TestMethod]
         public void RemoveValue()
         {

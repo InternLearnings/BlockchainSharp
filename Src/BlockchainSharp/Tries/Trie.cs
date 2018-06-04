@@ -49,7 +49,12 @@
 
         public Trie Remove(byte[] key)
         {
-            return this.Put(ToNibbles(key), 0, null);
+            var trie = this.Put(ToNibbles(key), 0, null);
+
+            if (trie == null)
+                return empty;
+
+            return trie;
         }
 
         private static bool EmptyLeafs(Trie[] leafs)
