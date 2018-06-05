@@ -8,6 +8,7 @@
     public enum MessageType
     {
         BlockMessage,
-        TransactionMessage
+        TransactionMessage,
+        StatusMessage
     }
 }

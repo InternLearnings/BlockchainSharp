@@ -56,6 +56,7 @@
     <Compile Include="Core\BlockHeader.cs" />
     <Compile Include="Core\BlockInfo.cs" />
     <Compile Include="Net\Messages\BlockMessage.cs" />
+    <Compile Include="Net\Messages\StatusMessage.cs" />
     <Compile Include="Net\Messages\Message.cs" />
     <Compile Include="Net\Messages\MessageType.cs" />
     <Compile Include="Net\Messages\TransactionMessage.cs" />
