@@ -38,7 +38,7 @@
 
         public BlockHash Hash { get { return this.header.Hash; } }
 
-        public Hash ParentHash { get { return this.header.ParentHash; } }
+        public BlockHash ParentHash { get { return this.header.ParentHash; } }
 
         public bool IsGenesis { get { return this.header.Number == 0 && this.header.ParentHash == null; } }
 

@@ -17,7 +17,7 @@
         {
             var store = new InMemoryBlockStore();
 
-            Assert.IsNull(store.GetByHash(new Hash()));
+            Assert.IsNull(store.GetByBlockHash(new BlockHash(new byte[] { 1, 2, 3 })));
         }
 
         [TestMethod]
@@ -25,7 +25,7 @@
         {
             var store = new InMemoryBlockStore();
 
-            var result = store.GetByParentHash(new Hash());
+            var result = store.GetByParentHash(new BlockHash(new byte[] { 1, 2, 3 }));
 
             Assert.IsNotNull(result);
             Assert.AreEqual(0, result.Count());
@@ -71,7 +71,7 @@
 
             store.Save(block);
 
-            var result = store.GetByHash(hash);
+            var result = store.GetByBlockHash(hash);
 
             Assert.IsNotNull(result);
             Assert.AreEqual(42ul, result.Number);

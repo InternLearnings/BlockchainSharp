@@ -7,14 +7,14 @@
 
     public interface IBlockStore
     {
-        Block GetByHash(Hash hash);
+        Block GetByBlockHash(BlockHash hash);
 
         IEnumerable<Block> GetByNumber(ulong number);
 
-        IEnumerable<Block> GetByParentHash(Hash hash);
+        IEnumerable<Block> GetByParentHash(BlockHash hash);
 
         void Save(Block block);
 
-        void Remove(Hash hash);
+        void Remove(BlockHash hash);
     }
 }

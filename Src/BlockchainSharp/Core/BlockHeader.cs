@@ -11,7 +11,7 @@
     public class BlockHeader
     {
         private ulong number;
-        private Hash parentHash;
+        private BlockHash parentHash;
         private Hash transactionsHash;
 
         private BlockHash hash;
@@ -25,7 +25,7 @@
 
         public ulong Number { get { return this.number; } }
 
-        public Hash ParentHash { get { return this.parentHash; } }
+        public BlockHash ParentHash { get { return this.parentHash; } }
 
         public Hash TransactionsHash { get { return this.transactionsHash; } }
 

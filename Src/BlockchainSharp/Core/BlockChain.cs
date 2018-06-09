@@ -24,14 +24,14 @@
 
         public bool TryToAdd(Block block)
         {
-            Hash blockHash = block.Hash;
+            BlockHash blockHash = block.Hash;
 
-            if (this.blockStore.GetByHash(blockHash) != null)
+            if (this.blockStore.GetByBlockHash(blockHash) != null)
                 return false;
 
             if (block.Number > 0)
             {
-                Block parent = this.blockStore.GetByHash(block.ParentHash);
+                Block parent = this.blockStore.GetByBlockHash(block.ParentHash);
                 
                 if (parent == null)
                     return false;
@@ -48,9 +48,9 @@
             return true;
         }
 
-        public bool HasBlock(Hash hash)
+        public bool HasBlock(BlockHash hash)
         {
-            return this.blockStore.GetByHash(hash) != null;
+            return this.blockStore.GetByBlockHash(hash) != null;
         }
 
         public Block GetBlock(ulong n)
@@ -61,7 +61,7 @@
             Block block = this.bestBlock;
 
             while (n != block.Number)
-                block = this.blockStore.GetByHash(block.ParentHash);
+                block = this.blockStore.GetByBlockHash(block.ParentHash);
 
             return block;
         }

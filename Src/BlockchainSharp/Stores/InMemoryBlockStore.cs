@@ -9,11 +9,11 @@
 
     public class InMemoryBlockStore : IBlockStore
     {
-        private IDictionary<Hash, Block> blocks = new Dictionary<Hash, Block>();
+        private IDictionary<BlockHash, Block> blocks = new Dictionary<BlockHash, Block>();
         private IDictionary<ulong, IList<Block>> blocksbynumber = new Dictionary<ulong, IList<Block>>();
-        private IDictionary<Hash, IList<Block>> blocksbyparenthash = new Dictionary<Hash, IList<Block>>();
+        private IDictionary<BlockHash, IList<Block>> blocksbyparenthash = new Dictionary<BlockHash, IList<Block>>();
 
-        public Block GetByHash(Hash hash)
+        public Block GetByBlockHash(BlockHash hash)
         {
             if (this.blocks.ContainsKey(hash))
                 return this.blocks[hash];
@@ -29,7 +29,7 @@
             return new List<Block>();
         }
 
-        public IEnumerable<Block> GetByParentHash(Hash hash)
+        public IEnumerable<Block> GetByParentHash(BlockHash hash)
         {
             if (this.blocksbyparenthash.ContainsKey(hash))
                 return this.blocksbyparenthash[hash];
@@ -69,7 +69,7 @@
             bs2.Add(block);
         }
 
-        public void Remove(Hash key)
+        public void Remove(BlockHash key)
         {
             Block block = this.blocks[key];
 
