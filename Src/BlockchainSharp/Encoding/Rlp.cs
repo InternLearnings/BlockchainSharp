@@ -43,7 +43,7 @@
 
             byte[] result;
 
-            if (bytes.Length < 56)
+            if (bytes.Length <= SizeSmall)
             {
                 result = new byte[bytes.Length + 1];
 
@@ -54,7 +54,7 @@
                 return result;
             }
 
-            if (bytes.Length < 256)
+            if (bytes.Length <= SizeMedium)
             {
                 result = new byte[bytes.Length + 2];
 
@@ -66,7 +66,7 @@
                 return result;
             }
 
-            if (bytes.Length < 256 * 256)
+            if (bytes.Length <= SizeLarge)
             {
                 result = new byte[bytes.Length + 3];
 
